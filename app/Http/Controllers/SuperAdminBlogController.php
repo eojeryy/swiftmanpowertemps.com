@@ -6,6 +6,7 @@ use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -104,27 +105,34 @@ class SuperAdminBlogController extends Controller
             return null;
         }
 
-        $directory = public_path('uploads/blogs');
-
-        if (! is_dir($directory)) {
-            mkdir($directory, 0755, true);
-        }
-
         $file = $request->file('image');
         $filename = Str::uuid()->toString().'.'.$file->getClientOriginalExtension();
-        $file->move($directory, $filename);
+        $storedPath = $file->storeAs('uploads/blogs', $filename, 'public');
 
-        return 'uploads/blogs/'.$filename;
+        return $storedPath ? 'storage/'.$storedPath : null;
     }
 
     protected function deleteImageIfManaged(?string $imagePath): void
     {
-        if (! $imagePath || ! str_starts_with($imagePath, 'uploads/blogs/')) {
+        if (! $imagePath) {
+            return;
+        }
+
+        if (str_starts_with($imagePath, 'storage/uploads/blogs/')) {
+            $storagePath = Str::after($imagePath, 'storage/');
+
+            if (Storage::disk('public')->exists($storagePath)) {
+                Storage::disk('public')->delete($storagePath);
+            }
+
+            return;
+        }
+
+        if (! str_starts_with($imagePath, 'uploads/blogs/')) {
             return;
         }
 
         $fullPath = public_path($imagePath);
-
         if (is_file($fullPath)) {
             unlink($fullPath);
         }
