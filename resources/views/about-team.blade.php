@@ -2,6 +2,16 @@
 
 @section('title', 'Meet Our Team | Swift Manpower Temps Agency Ltd')
 
+@section('styles')
+<style>
+    .team-style-three .team-block-one .inner-box .image-box img.team-founder-image {
+        height: 280px;
+        object-fit: cover;
+        width: 100%;
+    }
+</style>
+@endsection
+
 @section('content')
 <section class="page-title" style="background-image: url({{ asset('assets/images/background/page-title-2.jpg') }});">
     <div class="pattern-layer" style="background-image: url({{ asset('assets/images/shape/pattern-35.png') }});"></div>
@@ -31,7 +41,7 @@
             <div class="team-block-one">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <img src="{{ asset('assets/images/team/team-8.jpg') }}" alt="Leadership team">
+                        <img src="{{ asset('assets/images/background/co-founder2.jpeg') }}" alt="Fabian and Monica Ugwu" class="team-founder-image">
                         <span class="singature">Swift Team</span>
                     </figure>
                     <div class="lower-content">
@@ -55,7 +65,7 @@
             <div class="team-block-one">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <img src="{{ asset('assets/images/team/team-10.jpg') }}" alt="Client support">
+                        <img src="{{ asset('assets/images/background/co-founder1.jpeg') }}" alt="Fabian and Monica Ugwu" class="team-founder-image">
                         <span class="singature">Swift Team</span>
                     </figure>
                     <div class="lower-content">
@@ -191,4 +201,5 @@
         </div>
     </div>
 </section>
+
 @endsection

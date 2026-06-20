@@ -4,7 +4,7 @@
         <div class="outer-box">
             <figure class="logo-box">
                 <a href="{{ route('home') }}" class="brand-logo" aria-label="Swift Manpower Temps Agency Ltd">
-                    <img src="{{ asset('assets/images/logo/swiftmta2.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
+                    <img src="{{ asset('assets/images/logo/swiftmta4.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
                 </a>
             </figure>
             <div class="menu-area">
@@ -76,7 +76,7 @@
             <div class="menu-area pull-left">
                 <figure class="logo-box">
                     <a href="{{ route('home') }}" class="brand-logo" aria-label="Swift Manpower Temps Agency Ltd">
-                        <img src="{{ asset('assets/images/logo/swiftmta2.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
+                        <img src="{{ asset('assets/images/logo/swiftmta4.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
                     </a>
                 </figure>
                 <nav class="main-menu clearfix">
@@ -105,7 +105,7 @@
     <nav class="menu-box">
         <div class="nav-logo">
             <a href="{{ route('home') }}" class="brand-logo brand-logo-mobile" aria-label="Swift Manpower Temps Agency Ltd">
-                <img src="{{ asset('assets/images/logo/swiftmta2.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
+                <img src="{{ asset('assets/images/logo/swiftmta4.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
             </a>
         </div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>

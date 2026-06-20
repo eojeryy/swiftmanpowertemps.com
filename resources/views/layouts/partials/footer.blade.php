@@ -8,7 +8,7 @@
                         <div class="footer-widget logo-widget">
                             <figure class="footer-logo">
                                 <a href="{{ url('/') }}" class="brand-logo brand-logo-footer" aria-label="Swift Manpower Temps Agency Ltd">
-                                    <img src="{{ asset('assets/images/logo/swiftmta2.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
+                                    <img src="{{ asset('assets/images/logo/swiftmta4.png') }}" alt="Swift Manpower Temps Agency Ltd logo">
                                 </a>
                             </figure>
                             <div class="text">
