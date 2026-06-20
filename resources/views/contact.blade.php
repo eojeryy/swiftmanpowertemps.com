@@ -2,6 +2,20 @@
 
 @section('title', 'Contact | Swift Manpower Temps Agency Ltd')
 
+@section('styles')
+<style>
+    #content_block_6 .content-box .info-list li .inner p a,
+    .locations-section .single-item .info-list li a {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+    
+    .locations-section .single-item .info-list li {
+        min-width: 0;
+    }
+</style>
+@endsection
+
 @section('content')
 <section class="page-title" style="background-image: url({{ asset('assets/images/background/page-title-2.jpg') }});">
     <div class="pattern-layer" style="background-image: url({{ asset('assets/images/shape/pattern-35.png') }});"></div>
