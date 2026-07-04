@@ -289,8 +289,8 @@
     <div class="signin-wrap">
         <section class="signin-panel">
             <span>Secure Access</span>
-            <h1>Sign in to your super admin dashboard.</h1>
-            <p>Use your super admin account to access dashboard tools, protected pages, and website shortcuts faster.</p>
+            <h1>Sign in to your admin dashboard.</h1>
+            <p>Use your approved super admin or blog staff account to access the private content workspace.</p>
 
             <div class="signin-list">
                 <div>
@@ -299,17 +299,17 @@
                 </div>
                 <div>
                     <strong>Separate from employee access</strong>
-                    <small>This sign-in page is only for approved super admin accounts.</small>
+                    <small>This sign-in page is only for approved admin-area accounts.</small>
                 </div>
                 <div>
                     <strong>Team-ready control</strong>
-                    <small>Create additional super admin accounts when trusted staff need access.</small>
+                    <small>Super admins can also create blog staff accounts for teammates who only need blog access.</small>
                 </div>
             </div>
         </section>
 
         <section class="signin-card">
-            <h2>Super Admin Sign In</h2>
+            <h2>Admin Sign In</h2>
             <p>Enter your admin credentials to continue.</p>
 
             @if (session('status'))
@@ -335,12 +335,12 @@
                             <span class="field-hint">Required</span>
                         </div>
                         <div class="input-wrap">
-                            <input id="email" type="email" name="email" value="{{ old('email') }}" autocomplete="email" inputmode="email" placeholder="admin@example.com" aria-invalid="{{ $errors->has('email') ? 'true' : 'false' }}" required>
+                            <input id="email" type="email" name="email" value="{{ old('email', request('email')) }}" autocomplete="email" inputmode="email" placeholder="admin@example.com" aria-invalid="{{ $errors->has('email') ? 'true' : 'false' }}" required>
                         </div>
                         @error('email')
                             <div class="field-error">{{ $message }}</div>
                         @else
-                            <div class="field-note">Use the email attached to your approved super admin account.</div>
+                            <div class="field-note">Use the email attached to your approved admin-area account.</div>
                         @enderror
                     </div>
                     <div>

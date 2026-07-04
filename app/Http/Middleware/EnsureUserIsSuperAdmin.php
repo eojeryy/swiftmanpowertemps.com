@@ -15,7 +15,7 @@ class EnsureUserIsSuperAdmin
             return redirect()->route('super-admin.sign-in');
         }
 
-        if (! Auth::user()->is_super_admin) {
+        if (! Auth::user()->isSuperAdmin()) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();

@@ -211,14 +211,14 @@
                 </div>
                 <div class="copy-point">
                     <strong>Built for your team</strong>
-                    <span>Create more than one super admin when trusted staff need dashboard access.</span>
+                    <span>You can create up to two super admin accounts for trusted leadership access.</span>
                 </div>
             </div>
         </section>
 
         <section class="auth-card">
             <h2>Super Admin Sign Up</h2>
-            <p>Create an admin account and go directly into the dashboard after registration.</p>
+            <p>Create an admin account and go directly into the dashboard after registration. {{ $remainingSlots }} of 2 slots remaining.</p>
 
             @if (session('status'))
                 <div class="flash-status">{{ session('status') }}</div>

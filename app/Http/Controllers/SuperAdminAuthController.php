@@ -11,19 +11,37 @@ use Illuminate\View\View;
 
 class SuperAdminAuthController extends Controller
 {
+    protected const MAX_SUPER_ADMIN_ACCOUNTS = 2;
+
     public function showSignUp(): View|RedirectResponse
     {
-        if (Auth::check() && Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->canAccessAdminPanel()) {
             return redirect()->route('super-admin.dashboard');
         }
 
-        return view('super-admin.auth.sign-up');
+        if ($this->hasReachedSuperAdminLimit()) {
+            return redirect()
+                ->route('super-admin.sign-in')
+                ->with('status', 'Super admin sign-up is closed because the two-account limit has been reached.');
+        }
+
+        return view('super-admin.auth.sign-up', [
+            'remainingSlots' => max(0, self::MAX_SUPER_ADMIN_ACCOUNTS - $this->superAdminCount()),
+        ]);
     }
 
     public function signUp(Request $request): RedirectResponse
     {
-        if (Auth::check() && Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->canAccessAdminPanel()) {
             return redirect()->route('super-admin.dashboard');
+        }
+
+        if ($this->hasReachedSuperAdminLimit()) {
+            return redirect()
+                ->route('super-admin.sign-in')
+                ->withErrors([
+                    'email' => 'Super admin sign-up is closed because the two-account limit has been reached.',
+                ]);
         }
 
         $validated = $request->validate([
@@ -37,6 +55,7 @@ class SuperAdminAuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'is_super_admin' => true,
+            'role' => User::ROLE_SUPER_ADMIN,
         ]);
 
         Auth::login($superAdmin);
@@ -49,7 +68,7 @@ class SuperAdminAuthController extends Controller
 
     public function showSignIn(): View|RedirectResponse
     {
-        if (Auth::check() && Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->canAccessAdminPanel()) {
             return redirect()->route('super-admin.dashboard');
         }
 
@@ -58,7 +77,7 @@ class SuperAdminAuthController extends Controller
 
     public function signIn(Request $request): RedirectResponse
     {
-        if (Auth::check() && Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->canAccessAdminPanel()) {
             return redirect()->route('super-admin.dashboard');
         }
 
@@ -77,14 +96,14 @@ class SuperAdminAuthController extends Controller
 
         $request->session()->regenerate();
 
-        if (! Auth::user()->is_super_admin) {
+        if (! Auth::user()->canAccessAdminPanel()) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
             return back()
                 ->withErrors([
-                    'email' => 'This account does not have super admin access.',
+                    'email' => 'This account does not have admin panel access.',
                 ])
                 ->onlyInput('email');
         }
@@ -104,5 +123,18 @@ class SuperAdminAuthController extends Controller
         return redirect()
             ->route('super-admin.sign-in')
             ->with('status', 'You have been signed out successfully.');
+    }
+
+    protected function superAdminCount(): int
+    {
+        return User::query()
+            ->where('role', User::ROLE_SUPER_ADMIN)
+            ->orWhere('is_super_admin', true)
+            ->count();
+    }
+
+    protected function hasReachedSuperAdminLimit(): bool
+    {
+        return $this->superAdminCount() >= self::MAX_SUPER_ADMIN_ACCOUNTS;
     }
 }

@@ -144,7 +144,7 @@
 
 @section('content')
 @php
-    $employeeUser = auth()->check() && ! auth()->user()->is_super_admin ? auth()->user() : null;
+    $employeeUser = auth()->check() && auth()->user()->isEmployee() ? auth()->user() : null;
     $nameParts = $employeeUser ? preg_split('/\s+/', trim($employeeUser->name), 2) : [];
     $prefillFirstName = old('fname', $nameParts[0] ?? '');
     $prefillLastName = old('lname', $nameParts[1] ?? '');

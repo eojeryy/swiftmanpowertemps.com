@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
+            'admin.panel' => \App\Http\Middleware\EnsureUserCanAccessAdminPanel::class,
             'employee' => \App\Http\Middleware\EnsureUserIsEmployee::class,
             'super.admin' => \App\Http\Middleware\EnsureUserIsSuperAdmin::class,
         ]);

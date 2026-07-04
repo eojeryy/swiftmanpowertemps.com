@@ -15,7 +15,7 @@ class EnsureUserIsEmployee
             return redirect()->route('employee.sign-in');
         }
 
-        if (Auth::user()->is_super_admin) {
+        if (! Auth::user()->isEmployee()) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();

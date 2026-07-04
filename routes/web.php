@@ -12,9 +12,11 @@ use App\Http\Controllers\SuperAdminBlogCategoryController;
 use App\Http\Controllers\SuperAdminAuthController;
 use App\Http\Controllers\SuperAdminApplicantController;
 use App\Http\Controllers\SuperAdminDashboardController;
+use App\Http\Controllers\SuperAdminStaffAccountController;
 use App\Http\Controllers\SuperAdminEmployerJobRequestController;
 use App\Http\Controllers\SuperAdminJobOpeningController;
 use App\Http\Controllers\SuperAdminJobApplicationController;
+use App\Mail\EmployerJobRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
@@ -114,11 +116,12 @@ Route::post('/place-job', function (Request $request) {
     ]);
 
     $contactName = trim($validated['contact_first_name'].' '.$validated['contact_last_name']);
+    $jobRequest = null;
 
     $requestStored = true;
 
     try {
-        EmployerJobRequest::create([
+        $jobRequest = EmployerJobRequest::create([
             ...$validated,
             'username' => $contactName,
         ]);
@@ -132,37 +135,14 @@ Route::post('/place-job', function (Request $request) {
         ]);
     }
 
-    $body = implode("\n", [
-        'New employer job request from Swift Manpower Temps Agency Ltd',
-        '',
-        'Company Name: '.$validated['company_name'],
-        'Website: '.($validated['website'] ?: 'Not provided'),
-        'Industry: '.$validated['industry'],
-        'Company Phone: '.$validated['company_phone'],
-        'Company Address: '.$validated['company_address'],
-        'Contact First Name: '.$validated['contact_first_name'],
-        'Contact Last Name: '.$validated['contact_last_name'],
-        'Contact Person: '.$contactName,
-        'Email: '.$validated['email'],
-        'Contact Phone: '.$validated['phone'],
-        'Profile Link: '.($validated['profile_link'] ?: 'Not provided'),
-        'Service Needed: '.$validated['interest'],
-        'Specialisation: '.$validated['specialization'],
-        'Job Location: '.$validated['job_location'],
-        'Pay Rate Range: '.($validated['pay_rate'] ?: 'Not provided'),
-        'Position Hiring For: '.$validated['position_hiring_for'],
-        'Preferred Pronoun: '.($validated['preferred_pronoun'] ?: 'Not provided'),
-        'Number of Openings: '.($validated['openings_count'] ?: 'Not provided'),
-        'Subject: '.$validated['subject'],
-        'Job Details: '.($validated['message'] ?: 'No additional job details provided.'),
-    ]);
-
-    Mail::raw($body, function ($message) use ($validated) {
-        $message
-            ->to('swiftmanpowertemps@gmail.com')
-            ->replyTo($validated['email'], trim($validated['contact_first_name'].' '.$validated['contact_last_name']))
-            ->subject('Employer job request: '.$validated['subject']);
-    });
+    Mail::to('swiftmanpowertemps@gmail.com')->send(
+        new EmployerJobRequestNotification(
+            $jobRequest ?? new EmployerJobRequest([
+                ...$validated,
+                'username' => $contactName,
+            ]),
+        ),
+    );
 
     return redirect()
         ->route('place.job')
@@ -195,21 +175,30 @@ Route::prefix('super-admin')->name('super-admin.')->group(function () {
     Route::get('/sign-in', [SuperAdminAuthController::class, 'showSignIn'])->name('sign-in');
     Route::post('/sign-in', [SuperAdminAuthController::class, 'signIn'])->name('authenticate');
 
-    Route::middleware('super.admin')->group(function () {
+    Route::middleware('admin.panel')->group(function () {
         Route::get('/dashboard', [SuperAdminDashboardController::class, 'index'])->name('dashboard');
+        Route::resource('blogs', SuperAdminBlogController::class)->parameters([
+            'blogs' => 'blog',
+        ]);
+        Route::post('/logout', [SuperAdminAuthController::class, 'logout'])->name('logout');
+    });
+
+    Route::middleware('super.admin')->group(function () {
         Route::get('/applicants', [SuperAdminApplicantController::class, 'index'])->name('applicants.index');
         Route::get('/job-openings', [SuperAdminJobOpeningController::class, 'index'])->name('job-openings.index');
         Route::get('/applications/{jobApplication}/resume', [SuperAdminJobApplicationController::class, 'downloadResume'])->name('applications.resume');
         Route::get('/job-requests', [SuperAdminEmployerJobRequestController::class, 'index'])->name('job-requests.index');
         Route::get('/job-requests/{employerJobRequest}', [SuperAdminEmployerJobRequestController::class, 'show'])->name('job-requests.show');
         Route::post('/job-requests/{employerJobRequest}/approve', [SuperAdminEmployerJobRequestController::class, 'approve'])->name('job-requests.approve');
-        Route::resource('blogs', SuperAdminBlogController::class)->parameters([
-            'blogs' => 'blog',
-        ]);
         Route::resource('blog-categories', SuperAdminBlogCategoryController::class)->parameters([
             'blog-categories' => 'blogCategory',
         ]);
-        Route::post('/logout', [SuperAdminAuthController::class, 'logout'])->name('logout');
+        Route::get('/staff-accounts', [SuperAdminStaffAccountController::class, 'index'])->name('staff-accounts.index');
+        Route::post('/staff-accounts', [SuperAdminStaffAccountController::class, 'store'])->name('staff-accounts.store');
+        Route::get('/staff-accounts/{staffAccount}', [SuperAdminStaffAccountController::class, 'show'])->name('staff-accounts.show');
+        Route::get('/staff-accounts/{staffAccount}/edit', [SuperAdminStaffAccountController::class, 'edit'])->name('staff-accounts.edit');
+        Route::put('/staff-accounts/{staffAccount}', [SuperAdminStaffAccountController::class, 'update'])->name('staff-accounts.update');
+        Route::delete('/staff-accounts/{staffAccount}', [SuperAdminStaffAccountController::class, 'destroy'])->name('staff-accounts.destroy');
     });
 });
 
@@ -254,7 +243,7 @@ Route::post('/apply-now', function (Request $request) {
         JobApplication::create([
             ...$validated,
             'upload_file' => $resumePath,
-            'user_id' => auth()->check() && ! auth()->user()->is_super_admin ? auth()->id() : null,
+            'user_id' => auth()->check() && auth()->user()->isEmployee() ? auth()->id() : null,
         ]);
     } catch (QueryException $exception) {
         $applicationStored = false;

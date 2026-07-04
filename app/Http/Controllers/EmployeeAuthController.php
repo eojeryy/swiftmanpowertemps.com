@@ -13,7 +13,7 @@ class EmployeeAuthController extends Controller
 {
     public function showSignUp(): View|RedirectResponse
     {
-        if (Auth::check() && ! Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->isEmployee()) {
             return redirect()->route('employee.dashboard');
         }
 
@@ -22,7 +22,7 @@ class EmployeeAuthController extends Controller
 
     public function signUp(Request $request): RedirectResponse
     {
-        if (Auth::check() && ! Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->isEmployee()) {
             return redirect()->route('employee.dashboard');
         }
 
@@ -37,6 +37,7 @@ class EmployeeAuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'is_super_admin' => false,
+            'role' => User::ROLE_EMPLOYEE,
         ]);
 
         Auth::login($employee);
@@ -49,7 +50,7 @@ class EmployeeAuthController extends Controller
 
     public function showSignIn(): View|RedirectResponse
     {
-        if (Auth::check() && ! Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->isEmployee()) {
             return redirect()->route('employee.dashboard');
         }
 
@@ -58,7 +59,7 @@ class EmployeeAuthController extends Controller
 
     public function signIn(Request $request): RedirectResponse
     {
-        if (Auth::check() && ! Auth::user()->is_super_admin) {
+        if (Auth::check() && Auth::user()->isEmployee()) {
             return redirect()->route('employee.dashboard');
         }
 
@@ -77,7 +78,7 @@ class EmployeeAuthController extends Controller
 
         $request->session()->regenerate();
 
-        if (Auth::user()->is_super_admin) {
+        if (! Auth::user()->isEmployee()) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
