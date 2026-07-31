@@ -28,7 +28,6 @@
                                     <li><a href="{{ route('employer.overview') }}">Overview</a></li>
                                     <li><a href="{{ route('place.job') }}">Place Job Order</a></li>
                                     <li><a href="{{ route('faq') }}">FAQ’s</a></li>
-                                    <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="{{ url('/') }}">Job Seekers</a>
@@ -44,7 +43,6 @@
                                     <li><a href="{{ route('employee.sign-up') }}">Employee Sign Up</a></li>
                                     <li><a href="{{ route('employee.sign-in') }}">Employee Sign In</a></li>
                                     <li><a href="{{ route('faq') }}">FAQ’s</a></li>
-                                    <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a href="{{ route('blog.grid') }}">Blog</a>

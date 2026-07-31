@@ -994,50 +994,52 @@
         <!-- project-style-two end -->
 
 
-        <!-- testimonial-style-three -->
-        <section class="testimonial-style-three bg-color-2">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/pattern-34.png);"></div>
-            <div class="auto-container">
-                <div class="sec-title centred">
-                    <span class="top-title">Testimonials</span>
-                    <h2>Words From Our Partners</h2>
-                </div>
-                <div class="three-item-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
-                    @foreach ($partnerTestimonials as $partnerTestimonial)
-                        @php
-                            $contactInitials = collect([
-                                $partnerTestimonial->contact_first_name,
-                                $partnerTestimonial->contact_last_name,
-                            ])
-                                ->filter()
-                                ->map(fn ($name) => strtoupper(substr($name, 0, 1)))
-                                ->implode('');
-                            $contactInitials = $contactInitials !== '' ? $contactInitials : 'EP';
-                            $thumbStyle = $partnerThumbStyles[$loop->index % count($partnerThumbStyles)];
-                        @endphp
-                        <div class="testimonial-block-three">
-                            <div class="inner-box">
-                                <div class="border-shap" style="background-image: url(assets/images/shape/border-2.png);"></div>
-                                <div class="author-box">
-                                    <figure class="author-thumb partner-thumb" style="{{ $thumbStyle }}">{{ $contactInitials }}</figure>
-                                    <h3>{{ $partnerTestimonial->company_name }}</h3>
-                                    <span class="designation">
-                                        {{ $partnerTestimonial->position_hiring_for ?: 'Employer Feedback' }}
-                                        @if ($partnerTestimonial->industry)
-                                            • {{ $partnerTestimonial->industry }}
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="text">
-                                    <p>{{ \Illuminate\Support\Str::limit(trim($partnerTestimonial->message), 220) }}</p>
+        @if ($partnerTestimonials->isNotEmpty())
+            <!-- testimonial-style-three -->
+            <section class="testimonial-style-three bg-color-2">
+                <div class="pattern-layer" style="background-image: url(assets/images/shape/pattern-34.png);"></div>
+                <div class="auto-container">
+                    <div class="sec-title centred">
+                        <span class="top-title">Testimonials</span>
+                        <h2>Words From Our Partners</h2>
+                    </div>
+                    <div class="three-item-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
+                        @foreach ($partnerTestimonials as $partnerTestimonial)
+                            @php
+                                $contactInitials = collect([
+                                    $partnerTestimonial->contact_first_name,
+                                    $partnerTestimonial->contact_last_name,
+                                ])
+                                    ->filter()
+                                    ->map(fn ($name) => strtoupper(substr($name, 0, 1)))
+                                    ->implode('');
+                                $contactInitials = $contactInitials !== '' ? $contactInitials : 'EP';
+                                $thumbStyle = $partnerThumbStyles[$loop->index % count($partnerThumbStyles)];
+                            @endphp
+                            <div class="testimonial-block-three">
+                                <div class="inner-box">
+                                    <div class="border-shap" style="background-image: url(assets/images/shape/border-2.png);"></div>
+                                    <div class="author-box">
+                                        <figure class="author-thumb partner-thumb" style="{{ $thumbStyle }}">{{ $contactInitials }}</figure>
+                                        <h3>{{ $partnerTestimonial->company_name }}</h3>
+                                        <span class="designation">
+                                            {{ $partnerTestimonial->position_hiring_for ?: 'Employer Feedback' }}
+                                            @if ($partnerTestimonial->industry)
+                                                • {{ $partnerTestimonial->industry }}
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ \Illuminate\Support\Str::limit(trim($partnerTestimonial->message), 220) }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- testimonial-style-three  end -->
+            </section>
+            <!-- testimonial-style-three  end -->
+        @endif
 
 
         <!-- news-section -->

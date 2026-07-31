@@ -156,10 +156,6 @@ Route::post('/place-job', function (Request $request) use ($officialEmails) {
             : 'Thanks, your job request was sent, but we could not save a local copy right now.');
 })->name('place.job.submit');
 
-Route::get('/testimonials', function () {
-    return view('testimonials');
-})->name('testimonials');
-
 Route::get('/job-openings', [PublicJobController::class, 'index'])->name('job.openings');
 Route::get('/job-details', [PublicJobController::class, 'show'])->name('job.details');
 Route::get('/job-details/{job}', [PublicJobController::class, 'show'])->name('job.details.show');
