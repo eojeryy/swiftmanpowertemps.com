@@ -29,7 +29,6 @@
         <div class="three-item-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
             <div class="testimonial-block-three">
                 <div class="inner-box">
-                    <figure class="quote-box"><img src="{{ asset('assets/images/icons/quote-3.png') }}" alt=""></figure>
                     <div class="author-box">
                         <figure class="author-thumb"><img src="{{ asset('assets/images/resource/testimonial-3.png') }}" alt=""></figure>
                         <h3>Employer Feedback</h3>
@@ -42,7 +41,6 @@
             </div>
             <div class="testimonial-block-three">
                 <div class="inner-box">
-                    <figure class="quote-box"><img src="{{ asset('assets/images/icons/quote-3.png') }}" alt=""></figure>
                     <div class="author-box">
                         <figure class="author-thumb"><img src="{{ asset('assets/images/resource/testimonial-4.png') }}" alt=""></figure>
                         <h3>Candidate Feedback</h3>
@@ -55,7 +53,6 @@
             </div>
             <div class="testimonial-block-three">
                 <div class="inner-box">
-                    <figure class="quote-box"><img src="{{ asset('assets/images/icons/quote-3.png') }}" alt=""></figure>
                     <div class="author-box">
                         <figure class="author-thumb"><img src="{{ asset('assets/images/resource/testimonial-5.png') }}" alt=""></figure>
                         <h3>Client Testimonial</h3>

@@ -114,7 +114,7 @@
             <ul>
                 <li>#201 3501 29st NE Calgary, AB</li>
                 <li><a href="tel:+14388712598">438-871-2598</a> / <a href="tel:+15878992598">587-899-2598</a></li>
-                <li><a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a></li>
+                <li><a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a></li>
             </ul>
         </div>
         <div class="social-links">

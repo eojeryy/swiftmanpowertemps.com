@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+$officialEmails = [
+    'monica@swiftmanpowertemps.com',
+    'fabian@swiftmanpowertemps.com',
+];
+
 Route::get('/', function () {
     $featuredPosts = BlogPost::where('status', 'published')
         ->orderByDesc('published_at')
@@ -92,7 +97,7 @@ Route::get('/place-job', function () {
     return view('place-job');
 })->name('place.job');
 
-Route::post('/place-job', function (Request $request) {
+Route::post('/place-job', function (Request $request) use ($officialEmails) {
     $validated = $request->validate([
         'company_name' => ['required', 'string', 'max:255'],
         'website' => ['nullable', 'string', 'max:255'],
@@ -135,7 +140,7 @@ Route::post('/place-job', function (Request $request) {
         ]);
     }
 
-    Mail::to('swiftmanpowertemps@gmail.com')->send(
+    Mail::to($officialEmails)->send(
         new EmployerJobRequestNotification(
             $jobRequest ?? new EmployerJobRequest([
                 ...$validated,
@@ -218,7 +223,7 @@ Route::get('/apply-now', function () {
     return view('apply-now');
 })->name('apply.now');
 
-Route::post('/apply-now', function (Request $request) {
+Route::post('/apply-now', function (Request $request) use ($officialEmails) {
     $validated = $request->validate([
         'fname' => ['required', 'string', 'max:255'],
         'lname' => ['required', 'string', 'max:255'],
@@ -275,9 +280,9 @@ Route::post('/apply-now', function (Request $request) {
         'Additional Information: '.($validated['message'] ?: 'No additional information provided.'),
     ]);
 
-    Mail::raw($body, function ($message) use ($validated, $resumeFile, $resumePath) {
+    Mail::raw($body, function ($message) use ($validated, $resumeFile, $resumePath, $officialEmails) {
         $message
-            ->to('swiftmanpowertemps@gmail.com')
+            ->to($officialEmails)
             ->replyTo($validated['email'], $validated['fname'].' '.$validated['lname'])
             ->subject('Job application: '.$validated['job_number']);
 
@@ -318,9 +323,9 @@ Route::post('/contact', function (Request $request) {
         'Message: '.($validated['message'] ?: 'No message provided.'),
     ]);
 
-    Mail::raw($body, function ($message) use ($validated) {
+    Mail::raw($body, function ($message) use ($validated, $officialEmails) {
         $message
-            ->to('swiftmanpowertemps@gmail.com')
+            ->to($officialEmails)
             ->replyTo($validated['email'], $validated['username'])
             ->subject('Website contact: '.$validated['subject']);
     });

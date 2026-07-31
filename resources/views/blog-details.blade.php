@@ -7,6 +7,11 @@
     .blog-rich-excerpt,
     .blog-rich-content {
         color: #6b7280;
+        line-height: 1.95;
+    }
+
+    .blog-details-content .news-block-one .inner-box .lower-content {
+        padding: 32px 34px 36px;
     }
 
     .blog-rich-excerpt p:last-child,
@@ -24,12 +29,33 @@
 
     .blog-rich-content ul,
     .blog-rich-content ol {
-        margin: 0 0 18px 22px;
+        line-height: 1.95;
+        margin: 0 0 22px 24px;
+    }
+
+    .blog-rich-excerpt {
+        margin-bottom: 22px;
+    }
+
+    .blog-rich-excerpt p,
+    .blog-rich-content p {
+        margin-bottom: 18px;
+    }
+
+    .blog-details-content .news-block-one .inner-box .lower-content h2 {
+        line-height: 1.35;
+        margin-bottom: 18px;
     }
 
     .blog-rich-content a,
     .blog-rich-excerpt a {
         color: #b91c1c;
+    }
+
+    @media (max-width: 767px) {
+        .blog-details-content .news-block-one .inner-box .lower-content {
+            padding: 24px 22px 28px;
+        }
     }
 </style>
 @endsection
@@ -96,7 +122,8 @@
                             <ul class="info-list clearfix">
                                 <li><a href="tel:4388712598">438-871-2598</a></li>
                                 <li><a href="tel:5878992598">587-899-2598</a></li>
-                                <li><a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a></li>
+                                <li><a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a></li>
+                                <li><a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a></li>
                             </ul>
                         </div>
                     </div>

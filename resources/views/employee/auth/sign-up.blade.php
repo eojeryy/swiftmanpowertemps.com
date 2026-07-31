@@ -7,38 +7,95 @@
     <title>Employee Sign Up | Swift Manpower Temps Agency Ltd</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background: linear-gradient(135deg, #0f172a 0%, #111827 42%, #f8fafc 42%, #f8fafc 100%); color: #0f172a; font-family: "Manrope", sans-serif; margin: 0; min-height: 100vh; }
+        :root {
+            --brand-accent: #78d833;
+            --brand-accent-strong: #5cab21;
+            --brand-accent-soft: #dff6cf;
+            --brand-charcoal: #0d1511;
+            --brand-panel: #1d2a23;
+            --brand-text: #29352e;
+            --brand-muted: #627068;
+            --brand-surface: #f6faf4;
+            --brand-surface-2: #e7f1e2;
+            --brand-border: rgba(120, 216, 51, 0.18);
+        }
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(120, 216, 51, 0.18), transparent 26%),
+                linear-gradient(135deg, #eef6ea 0%, #e3efdd 38%, #f9fcf7 38%, #f9fcf7 100%);
+            color: var(--brand-charcoal);
+            font-family: "Manrope", sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
         * { box-sizing: border-box; }
         .signup-shell { display: grid; gap: 34px; grid-template-columns: 0.95fr 1.05fr; margin: 0 auto; max-width: 1180px; min-height: 100vh; padding: 36px 24px; align-items: center; }
-        .signup-copy { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; color: #fff; padding: 36px; }
-        .signup-copy span { color: #fecaca; display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+        .signup-copy {
+            background:
+                radial-gradient(circle at top left, rgba(120, 216, 51, 0.14), transparent 28%),
+                linear-gradient(180deg, rgba(16, 27, 21, 0.96), rgba(26, 41, 31, 0.94));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 32px;
+            color: #fff;
+            padding: 40px;
+            box-shadow: 0 28px 64px rgba(13, 21, 17, 0.18);
+        }
+        .signup-copy span { color: #c9f0aa; display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
         .signup-copy h1 { font-size: 46px; line-height: 1.05; margin: 16px 0; }
         .signup-copy p, .signup-points small { color: rgba(255,255,255,0.78); }
         .signup-points { display: grid; gap: 14px; margin-top: 26px; }
-        .signup-points div { background: rgba(15,23,42,0.28); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 16px 18px; }
+        .signup-points div {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(120, 216, 51, 0.16);
+            border-radius: 20px;
+            padding: 18px 20px;
+            backdrop-filter: blur(4px);
+        }
         .signup-points strong { color: #ffffff; display: block; margin-bottom: 6px; }
         .signup-points small { color: rgba(255,255,255,0.9); display: block; }
-        .signup-card { background: #fff; border-radius: 30px; box-shadow: 0 24px 70px rgba(15,23,42,0.14); padding: 34px; }
+        .signup-card {
+            background:
+                radial-gradient(circle at top right, rgba(120, 216, 51, 0.12), transparent 26%),
+                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244, 249, 241, 0.96));
+            border: 1px solid var(--brand-border);
+            border-radius: 32px;
+            box-shadow: 0 24px 70px rgba(15,23,42,0.1);
+            padding: 36px;
+        }
         .signup-card h2 { font-size: 30px; margin: 0 0 10px; }
-        .signup-card p { color: #64748b; margin: 0 0 24px; }
+        .signup-card p { color: var(--brand-muted); margin: 0 0 24px; }
         .form-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .field { margin-top: 16px; }
         .field.full { grid-column: 1 / -1; }
         .field label { display: block; font-size: 14px; font-weight: 800; margin-bottom: 8px; }
         .field-meta { align-items: center; display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
         .field-meta label { margin-bottom: 0; }
-        .field-hint { color: #64748b; font-size: 12px; }
+        .field-hint { color: var(--brand-muted); font-size: 12px; }
         .input-wrap { position: relative; }
-        .field input { border: 1px solid #dbe3ef; border-radius: 16px; font: inherit; min-height: 54px; padding: 14px 16px; transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; width: 100%; }
+        .field input {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(120, 216, 51, 0.16);
+            border-radius: 18px;
+            font: inherit;
+            min-height: 56px;
+            padding: 14px 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            width: 100%;
+        }
         .field input::placeholder { color: #94a3b8; }
-        .field input:focus { background: #fff; border-color: #dc2626; box-shadow: 0 0 0 4px rgba(220,38,38,0.1); outline: none; }
+        .field input:focus {
+            background: #fff;
+            border-color: var(--brand-accent-strong);
+            box-shadow: 0 0 0 4px rgba(120,216,51,0.12);
+            outline: none;
+        }
         .field input[aria-invalid="true"] { border-color: #e11d48; box-shadow: 0 0 0 4px rgba(225,29,72,0.08); }
         .password-input { padding-right: 58px; }
         .toggle-password {
             align-items: center;
             background: transparent;
             border: 0;
-            color: #64748b;
+            color: var(--brand-muted);
             cursor: pointer;
             display: inline-flex;
             font: inherit;
@@ -51,9 +108,9 @@
             right: 0;
             top: 0;
         }
-        .toggle-password:hover { color: #b91c1c; }
+        .toggle-password:hover { color: var(--brand-accent-strong); }
         .field-note, .field-error, .form-note { font-size: 12px; line-height: 1.5; margin-top: 8px; }
-        .field-note, .form-note { color: #64748b; }
+        .field-note, .form-note { color: var(--brand-muted); }
         .field-error { color: #be123c; font-weight: 700; }
         .strength-row {
             align-items: center;
@@ -62,34 +119,47 @@
             margin-top: 10px;
         }
         .strength-bar {
-            background: #e2e8f0;
+            background: #dce7d8;
             border-radius: 999px;
             flex: 1;
             height: 8px;
             overflow: hidden;
         }
         .strength-bar span {
-            background: linear-gradient(135deg, #f97316, #dc2626);
+            background: linear-gradient(135deg, var(--brand-accent), var(--brand-accent-strong));
             border-radius: inherit;
             display: block;
             height: 100%;
             transition: width 0.2s ease, background-color 0.2s ease;
             width: 0;
         }
-        .strength-text { color: #64748b; font-size: 12px; font-weight: 700; min-width: 92px; text-align: right; }
+        .strength-text { color: var(--brand-muted); font-size: 12px; font-weight: 700; min-width: 92px; text-align: right; }
         .form-summary {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: linear-gradient(180deg, #f6faf4, #eef5eb);
+            border: 1px solid rgba(120, 216, 51, 0.16);
             border-radius: 18px;
-            color: #475569;
+            color: var(--brand-text);
             font-size: 13px;
             line-height: 1.6;
             margin-bottom: 18px;
             padding: 14px 16px;
         }
-        .auth-btn { background: linear-gradient(135deg, #dc2626, #7f1d1d); border: 0; border-radius: 16px; color: #fff; cursor: pointer; font: inherit; font-weight: 800; margin-top: 20px; min-height: 54px; padding: 16px 18px; width: 100%; }
+        .auth-btn {
+            background: linear-gradient(135deg, var(--brand-charcoal), var(--brand-panel));
+            border: 0;
+            border-radius: 18px;
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 800;
+            margin-top: 20px;
+            min-height: 56px;
+            padding: 16px 18px;
+            width: 100%;
+            box-shadow: 0 18px 34px rgba(13, 21, 17, 0.14);
+        }
         .auth-btn:disabled { cursor: wait; opacity: 0.8; }
-        .auth-link { color: #b91c1c; display: inline-block; font-weight: 800; margin-top: 18px; }
+        .auth-link { color: var(--brand-accent-strong); display: inline-block; font-weight: 800; margin-top: 18px; }
         .flash-status, .flash-errors { border-radius: 18px; margin-bottom: 16px; padding: 14px 16px; }
         .flash-status { background: #ecfdf3; border: 1px solid #bbf7d0; color: #166534; }
         .flash-errors { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; }

@@ -5,7 +5,7 @@
 @section('content')
         @php
             $partnerThumbStyles = [
-                'background: linear-gradient(135deg, #c53030, #7f1d1d);',
+                'background: linear-gradient(135deg, #166534, #0f3d2e);',
                 'background: linear-gradient(135deg, #0f766e, #164e63);',
                 'background: linear-gradient(135deg, #7c3aed, #312e81);',
                 'background: linear-gradient(135deg, #ea580c, #9a3412);',
@@ -124,7 +124,7 @@
                     <li><a href="{{ route('home') }}">In</a></li>
                 </ul>
             </div>
-            <div class="mail-box"><a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a></div>
+            <div class="mail-box"><a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a></div>
         </section>
         <!-- banner-section end -->
 
@@ -1018,7 +1018,6 @@
                         <div class="testimonial-block-three">
                             <div class="inner-box">
                                 <div class="border-shap" style="background-image: url(assets/images/shape/border-2.png);"></div>
-                                <figure class="quote-box"><img src="assets/images/icons/quote-3.png" alt=""></figure>
                                 <div class="author-box">
                                     <figure class="author-thumb partner-thumb" style="{{ $thumbStyle }}">{{ $contactInitials }}</figure>
                                     <h3>{{ $partnerTestimonial->company_name }}</h3>

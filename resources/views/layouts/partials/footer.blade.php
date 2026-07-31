@@ -15,7 +15,8 @@
                                 <p>Swift Manpower Temps Agency Ltd supports employers with dependable staffing solutions and helps job seekers connect with practical opportunities.</p>
                                 <p>#201 3501 29st NE Calgary, AB</p>
                                 <p>Ph: <a href="tel:+14388712598">438-871-2598</a> / <a href="tel:+15878992598">587-899-2598</a></p>
-                                <p>Email: <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a></p>
+                                <p>Email: <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a></p>
+                                <p>Email: <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a></p>
                             </div>
                             <div class="upload-btn"><a href="{{ url('/') }}"><i class="flaticon-cloud-computing"></i>Upload Resume</a></div>
                         </div>

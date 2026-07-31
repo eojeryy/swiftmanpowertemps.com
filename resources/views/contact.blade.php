@@ -59,7 +59,8 @@
                                     <p>
                                         <a href="tel:+14388712598">438-871-2598</a><br>
                                         <a href="tel:+15878992598">587-899-2598</a><br>
-                                        <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a>
+                                        <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a><br>
+                                        <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a>
                                     </p>
                                 </div>
                             </li>
@@ -147,7 +148,8 @@
                             <li>
                                 <i class="flaticon-email"></i>
                                 <p>Email</p>
-                                <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a>
+                                <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a><br>
+                                <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a>
                             </li>
                             <li>
                                 <i class="flaticon-phone-call"></i>
@@ -169,7 +171,8 @@
                             <li>
                                 <i class="flaticon-email"></i>
                                 <p>Email</p>
-                                <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a>
+                                <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a><br>
+                                <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a>
                             </li>
                             <li>
                                 <i class="flaticon-phone-call"></i>
@@ -191,7 +194,8 @@
                             <li>
                                 <i class="flaticon-email"></i>
                                 <p>Email</p>
-                                <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a>
+                                <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a><br>
+                                <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a>
                             </li>
                             <li>
                                 <i class="flaticon-phone-call"></i>

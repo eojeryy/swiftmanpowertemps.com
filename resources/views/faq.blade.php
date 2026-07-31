@@ -75,7 +75,7 @@
                             </div>
                             <div class="acc-content">
                                 <div class="text">
-                                    <p>You can reach us at <a href="tel:+14388712598">438-871-2598</a>, <a href="tel:+15878992598">587-899-2598</a>, or by email at <a href="mailto:swiftmanpowertemps@gmail.com">swiftmanpowertemps@gmail.com</a>.</p>
+                                    <p>You can reach us at <a href="tel:+14388712598">438-871-2598</a>, <a href="tel:+15878992598">587-899-2598</a>, or by email at <a href="mailto:monica@swiftmanpowertemps.com">monica@swiftmanpowertemps.com</a> and <a href="mailto:fabian@swiftmanpowertemps.com">fabian@swiftmanpowertemps.com</a>.</p>
                                 </div>
                             </div>
                         </div>

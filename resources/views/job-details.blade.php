@@ -580,7 +580,8 @@
                     <div class="contact-links">
                         <a href="tel:4388712598"><i class="flaticon-phone-call"></i>438-871-2598</a>
                         <a href="tel:5878992598"><i class="flaticon-phone-call"></i>587-899-2598</a>
-                        <a href="mailto:swiftmanpowertemps@gmail.com"><i class="flaticon-email"></i>swiftmanpowertemps@gmail.com</a>
+                        <a href="mailto:monica@swiftmanpowertemps.com"><i class="flaticon-email"></i>monica@swiftmanpowertemps.com</a>
+                        <a href="mailto:fabian@swiftmanpowertemps.com"><i class="flaticon-email"></i>fabian@swiftmanpowertemps.com</a>
                     </div>
                 </div>
 
