@@ -27,7 +27,7 @@
         <h3>Publish Actions</h3>
         <div class="request-note-box">
             <p class="request-notes">
-                Approving this request creates a real public `JobOpening` record that will immediately appear on the live job openings page.
+                Approving this request publishes the role on the website, where candidates can view it and apply.
             </p>
         </div>
 

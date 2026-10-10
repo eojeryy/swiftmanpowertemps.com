@@ -28,16 +28,17 @@
                 <p>When employers submit the public place-job form, their requests will show up here for review.</p>
             </div>
         @else
-            <div class="request-table-wrap">
-                <table class="request-table">
+            @include('account.partials.table-filter', ['tableId' => 'request-records', 'label' => 'job requests'])
+            <div class="request-table-wrap" tabindex="0" role="region" aria-label="Job requests table">
+                <table class="request-table" id="request-records">
                     <thead>
                         <tr>
-                            <th>Role Request</th>
-                            <th>Company</th>
-                            <th>Status</th>
-                            <th>Contact</th>
-                            <th>Submitted</th>
-                            <th>Actions</th>
+                            <th scope="col">Role Request</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Submitted</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

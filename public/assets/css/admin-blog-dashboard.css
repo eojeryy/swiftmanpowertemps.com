@@ -1,0 +1,102 @@
+.blog-staff-grid {
+        display: grid;
+        gap: 24px;
+    }
+
+    .blog-staff-hero {
+        background:
+            radial-gradient(circle at top right, rgba(69, 118, 72, 0.18), transparent 34%),
+            linear-gradient(135deg, #172b25, #263e34 58%, #172b25 120%);
+        color: #fff;
+    }
+
+    .blog-staff-hero h3,
+    .blog-post-list strong {
+        color: inherit;
+        margin: 0 0 10px;
+    }
+
+    .blog-staff-hero p,
+    .blog-post-list span,
+    .blog-staff-stat small {
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .blog-staff-actions,
+    .blog-staff-metrics,
+    .blog-post-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .blog-staff-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 20px;
+    }
+
+    .blog-staff-actions a,
+    .blog-post-link {
+        align-items: center;
+        border-radius: 12px;
+        display: inline-flex;
+        font-weight: 800;
+        justify-content: center;
+        padding: 14px 18px;
+    }
+
+    .blog-staff-actions a.primary {
+        background: #fff;
+        color: #172b25;
+    }
+
+    .blog-staff-actions a.secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #fff;
+    }
+
+    .blog-staff-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .blog-staff-stat {
+        background: linear-gradient(180deg, #fff, #f3f7f2);
+        border: 1px solid #e1e8e2;
+        border-radius: 12px;
+        padding: 22px;
+    }
+
+    .blog-staff-stat strong {
+        display: block;
+        font-size: 40px;
+        margin-bottom: 8px;
+    }
+
+    .blog-post-item {
+        align-items: center;
+        background: #f8faf6;
+        border: 1px solid #e1e8e2;
+        border-radius: 12px;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        padding: 18px 20px;
+    }
+
+    .blog-post-link {
+        background: #e6f0e5;
+        color: #9a3412;
+        padding: 12px 14px;
+    }
+
+    @media (max-width: 767px) {
+        .blog-staff-actions,
+        .blog-staff-metrics {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-post-item {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }

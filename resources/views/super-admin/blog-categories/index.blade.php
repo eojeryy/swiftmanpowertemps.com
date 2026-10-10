@@ -25,15 +25,16 @@
                 <p>Create your first category to start organizing blog posts.</p>
             </div>
         @else
-            <div class="category-table-wrap">
-                <table class="category-table">
+            @include('account.partials.table-filter', ['tableId' => 'category-records', 'label' => 'categories'])
+            <div class="category-table-wrap" tabindex="0" role="region" aria-label="Categories table">
+                <table class="category-table" id="category-records">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Slug</th>
-                            <th>Created</th>
-                            <th>Actions</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Created</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

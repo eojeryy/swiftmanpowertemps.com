@@ -1,0 +1,117 @@
+/* Shared form, table and reading styles for internal workspaces. */
+.workspace-skip { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 10px 16px; background: #b7ed80; color: #172b25; border-radius: 8px; font-weight: 800; }
+.workspace-skip:focus { top: 12px; }
+.admin-content :is(.form-panel, .category-panel, .category-view-card, .request-panel, .request-summary-card, .blog-view-card) { padding: 22px; }
+.admin-content :is(.form-section-title, .category-section-title) h3 { font-size: 20px; letter-spacing: -.5px; }
+.admin-content :is(.form-section-title, .category-section-title) span { font-size: 12px; }
+.admin-content :is(.blog-form-grid, .category-form-grid, .category-view-grid, .request-view-grid, .blog-view-grid, .staff-show-grid) { align-items: start; gap: 20px; }
+.admin-content :is(.form-side-stack, .category-side-stack) { gap: 20px; }
+.admin-content :is(.form-field, .category-field, .staff-form-field) label { font-size: 12px; }
+.admin-content :is(.form-field, .category-field, .staff-form-field) :is(input, select, textarea) { border-radius: 8px; padding: 11px 13px; color: var(--admin-text); background: #fff; border: 1px solid #d6e1d8; }
+.admin-content :is(input, select, textarea):focus-visible { outline: 2px solid #28704c; outline-offset: 2px; box-shadow: 0 0 0 4px #28704c0d; }
+.admin-content input[type=file] { font-size: 12px; background: #f8faf6; }
+.admin-content input::file-selector-button { border: 0; border-radius: 5px; background: #e6f0e5; color: #28704c; padding: 6px 9px; font: inherit; margin-right: 10px; cursor: pointer; }
+.admin-content :is(.field-note, .staff-form-note, .staff-note) { font-size: 11px; line-height: 1.7; }
+.admin-content :is(.admin-btn, .category-btn, .request-btn, .staff-btn, .staff-form-submit, .post-actions a, .post-actions button, .category-actions-row a, .category-actions-row button, .staff-action, .staff-action-danger, .blog-view-actions a, .blog-view-actions button, .staff-show-actions a, .job-action-row a, .job-toolbar-link, .applicant-action-row a) { border-radius: 8px; font-size: 12px; padding: 9px 13px; min-height: 40px; }
+.admin-content :is(.admin-btn-primary, .category-btn-primary, .request-btn-primary, .staff-btn-primary, .staff-form-submit) { background: #28704c; }
+.admin-content :is(.admin-btn-primary, .category-btn-primary, .request-btn-primary, .staff-btn-primary, .staff-form-submit):hover { background: #1d5839; }
+.admin-content :is(.blog-toolbar, .category-toolbar, .request-toolbar, .job-toolbar) h3 { font-size: 20px; margin: 0; }
+.admin-content :is(.blog-toolbar, .category-toolbar, .request-toolbar, .job-toolbar) p { font-size: 12px; max-width: 65ch; }
+.admin-content :is(.dashboard-card-title, .form-section-title, .category-section-title) h3 { font-size: 18px; margin-top: 0; }
+.admin-content .dashboard-card-title { display: flex; align-items: start; gap: 14px; justify-content: space-between; margin-bottom: 18px; }
+.admin-content .dashboard-card-title > span { font-size: 11px; color: var(--admin-muted); }
+.admin-content :is(.blog-table, .category-table, .request-table, .staff-table, .job-table) { border-collapse: collapse; border-spacing: 0; }
+.admin-content :is(.blog-table, .category-table, .request-table, .staff-table, .job-table) th { background: #f4f7f3; padding: 12px 14px; font-size: 10px; letter-spacing: .07em; }
+.admin-content :is(.blog-table, .category-table, .request-table, .staff-table, .job-table) td { padding: 16px 14px; border: 0; border-bottom: 1px solid var(--admin-border); border-radius: 0; font-size: 12px; overflow-wrap: anywhere; }
+.admin-content :is(.blog-table, .category-table, .request-table, .staff-table, .job-table) tbody tr:hover td { background: #f8faf6; }
+.admin-content :is(.post-title-cell, .category-title-cell, .request-title-cell, .staff-name-cell) strong { font-size: 14px; }
+.admin-content :is(.post-status, .category-status, .request-status, .staff-badge, .job-status, .blog-chip, .category-chip, .request-chip, .request-badge) { border-radius: 6px; padding: 5px 9px; font-size: 10px; }
+.admin-content :is(.blog-table-wrap, .category-table-wrap, .request-table-wrap, .staff-table-wrap, .job-table-wrap) { scrollbar-width: thin; scrollbar-color: #9eb5a2 #f4f7f3; border: 1px solid var(--admin-border); border-radius: 10px; }
+.admin-content :is(.blog-meta-list, .category-meta-list, .request-meta-list, .staff-show-list) li { background: #f5f8f3; border-radius: 8px; padding: 13px 15px; overflow-wrap: anywhere; }
+.admin-content :is(.blog-meta-list, .category-meta-list, .request-meta-list) li strong { font-size: 10px; letter-spacing: .06em; }
+.admin-content :is(.blog-content-block, .category-description, .request-summary) { color: var(--admin-text); border-radius: 10px; font-size: 14px; line-height: 1.85; padding: 20px; overflow-wrap: anywhere; }
+.admin-content :is(.blog-content-block, .request-summary) { white-space: normal; }
+.admin-content :is(.blog-content-block, .request-summary) :is(img, video, iframe) { max-width: 100%; }
+.admin-content :is(.blog-content-block, .request-summary) a { color: var(--admin-accent); text-decoration: underline; }
+.admin-content .richtext-wrap { border-radius: 9px; }
+.admin-content .richtext-wrap:focus-within { border-color: var(--admin-accent); box-shadow: 0 0 0 3px #28704c12; }
+.admin-content .richtext-toolbar { background: #f4f7f3; gap: 5px; padding: 8px; }
+.admin-content .richtext-toolbar button { border-radius: 6px; font-size: 12px; padding: 0 9px; }
+.admin-content .richtext-editor { line-height: 1.85; color: var(--admin-text); overflow-wrap: anywhere; }
+.admin-content :is(.applicant-hero, .job-admin-hero, .blog-staff-hero) { background: #172b25; padding: 28px; }
+.admin-content :is(.applicant-hero, .job-admin-hero)::before { background: none; }
+.admin-content :is(.applicant-hero-copy, .job-admin-hero-copy) h3 { max-width: 28ch; line-height: 1.25; font-size: clamp(24px, 2.7vw, 32px); letter-spacing: -.7px; }
+.admin-content :is(.applicant-hero-copy, .job-admin-hero-copy) > span { color: #b7ed80; font-size: 10px; }
+.admin-content :is(.applicant-hero-copy, .job-admin-hero-copy) p { font-size: 13px; }
+.admin-content :is(.hero-insight, .job-hero-insight) { padding: 18px; border-radius: 10px; }
+.admin-content :is(.hero-insight, .job-hero-insight) strong { color: #b7ed80; font-size: 38px; }
+.admin-content :is(.hero-insight, .job-hero-insight) p { color: #c2d2c7; font-size: 12px; }
+.admin-content :is(.hero-action.primary, .job-hero-actions .primary, .blog-staff-actions .primary) { background: #b7ed80; color: #172b25; }
+.admin-content :is(.applicant-stat-card, .job-stat-card, .blog-staff-stat, .recent-applicant-card, .applicant-card, .applicant-job-card) { background: white; box-shadow: none; border: 1px solid var(--admin-border); border-radius: 10px; padding: 18px; }
+.admin-content :is(.applicant-stat-card, .job-stat-card, .blog-staff-stat) strong { font-size: 30px; }
+.admin-content :is(.applicant-stat-card, .job-stat-card, .blog-staff-stat) :is(p, small) { color: var(--admin-muted); font-size: 12px; }
+.admin-content .blog-post-list span { color: var(--admin-muted); font-size: 12px; }
+.admin-content .blog-staff-hero h3 { font-size: 28px; }
+.admin-content .blog-staff-actions { display: flex; flex-wrap: wrap; }
+.admin-content .blog-staff-actions a { font-size: 12px; padding: 10px 16px; border-radius: 8px; }
+.admin-content .applicant-panel { scroll-margin-top: 100px; border-radius: 10px; box-shadow: none; background: white; }
+.admin-content .applicant-panel summary { background: #f8faf6; }
+.admin-content .applicant-panel-count { background: #e6f0e5; color: #28704c; border-radius: 8px; box-shadow: none; }
+.admin-content .applicant-panel-count strong { color: #28704c; }
+.admin-content .applicant-grid > div { border-radius: 8px; background: #f5f8f3; }
+.admin-content .applicant-avatar { background: #e6f0e5; color: #28704c; box-shadow: none; }
+.admin-content :is(.staff-form-shell, .staff-login-route, .staff-login-box, .staff-form-banner) { border-radius: 12px; box-shadow: none; }
+.admin-content .staff-grid { grid-template-columns: minmax(0, 1fr); }
+.admin-content .staff-form-grid { gap: 16px; }
+.admin-content .staff-form-field input { min-height: 44px; }
+.admin-content :is(.staff-form-banner p, .staff-form-banner span, .staff-form-highlight span) { color: #c2d2c7; }
+.admin-content .staff-form-banner { background: #172b25; }
+.admin-content .staff-form-highlight { background: #ffffff0d; }
+.admin-content .staff-form-highlight strong { color: #b7ed80; }
+.admin-content .staff-login-text { overflow-wrap: anywhere; }
+.admin-content :is(.empty-state, .category-empty, .request-empty, .job-empty, .empty-state-card) { padding: 32px 20px; border-radius: 10px; }
+@media (min-width: 1200px) {
+    .admin-content :is(.blog-form-grid, .category-form-grid, .category-view-grid, .request-view-grid, .blog-view-grid) { grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr); }
+}
+@media (max-width: 767px) {
+    .admin-content :is(.dashboard-card-title, .blog-toolbar, .category-toolbar, .request-toolbar, .job-toolbar) { flex-direction: column; align-items: stretch; gap: 10px; }
+    .admin-content :is(.form-grid-two, .staff-form-grid, .staff-show-grid) { grid-template-columns: minmax(0, 1fr); }
+    .admin-content :is(.form-panel, .category-panel, .category-view-card, .request-panel, .request-summary-card, .blog-view-card, .applicant-hero, .job-admin-hero) { padding: 18px; }
+    .admin-content :is(.applicant-hero-grid, .job-admin-hero-grid) { grid-template-columns: minmax(0, 1fr); }
+    .admin-content .applicant-card-head { flex-wrap: wrap; }
+    .admin-content .applicant-identity { min-width: 0; }
+    .admin-content :is(.applicant-meta-copy, .applicant-grid span) { overflow-wrap: anywhere; }
+}
+[hidden] { display: none !important; }
+.workspace-field-error { font-size: 11px; color: #9f1239; margin: 7px 0 0; }
+.admin-content [aria-invalid="true"] { border-color: #b54b3d; }
+.workspace-filter { display: grid; grid-template-columns: auto minmax(160px, 320px) 1fr; align-items: center; gap: 12px; margin-bottom: 16px; }
+.workspace-filter label { font-size: 12px; font-weight: 800; }
+.workspace-filter input { border: 1px solid #d6e1d8; border-radius: 8px; padding: 10px 12px; min-width: 0; width: 100%; background: white; }
+.workspace-filter-status { font-size: 11px; color: var(--admin-muted); margin: 0; }
+.admin-content .richtext-wrap:not(.is-enhanced) :is(.richtext-toolbar, .richtext-editor) { display: none; }
+.admin-content .richtext-wrap:not(.is-enhanced) .richtext-source { display: block; min-height: 140px; }
+.admin-content .richtext-wrap.is-enhanced .richtext-source { display: none; }
+.admin-content .richtext-editor[aria-invalid="true"] { outline: 2px solid #b54b3d; outline-offset: -2px; }
+.admin-content .richtext-editor:focus-visible { outline: 2px solid #28704c; outline-offset: -2px; }
+.blog-excerpt { color: var(--admin-muted); font-size: 13px; }
+@media(max-width:640px) { .workspace-filter { grid-template-columns: 1fr; gap: 6px; } }
+.admin-content :is(.blog-table-wrap, .category-table-wrap, .request-table-wrap, .staff-table-wrap, .job-table-wrap):focus-visible { outline: 3px solid #75ad52; outline-offset: 3px; }
+.admin-content .applicant-page-grid .applicant-panel-summary { flex-direction: row; align-items: center; gap: 16px; }
+.admin-content .applicant-page-grid .applicant-panel-summary > div:first-child { min-width: 0; }
+.admin-content .applicant-page-grid .applicant-panel-count { min-width: 80px; padding: 10px; flex-shrink: 0; }
+.admin-content .applicant-page-grid .applicant-panel-count::after { content: '+'; display: block; font-size: 18px; line-height: 1; margin-top: 5px; }
+.admin-content .applicant-page-grid .applicant-panel[open] .applicant-panel-count::after { content: '−'; }
+.admin-content .applicant-page-grid .applicant-panel summary { padding: 18px; }
+.admin-content .applicant-page-grid .applicant-identity { flex-direction: row; align-items: start; }
+.admin-content .applicant-page-grid .applicant-avatar { width: 40px; height: 40px; font-size: 12px; flex-shrink: 0; }
+.admin-content .applicant-page-grid .applicant-tag { padding: 4px 8px; border-radius: 5px; font-size: 10px; }
+.admin-content .applicant-page-grid .applicant-overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media(min-width:768px) and (max-width:1199px) {
+    .admin-content .applicant-page-grid :is(.recent-applicant-grid, .applicant-grid) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width:480px) {
+    .admin-content .applicant-page-grid .applicant-overview-grid { grid-template-columns: 1fr; }
+    .admin-content .applicant-page-grid .applicant-panel-count { min-width: 65px; }
+    .admin-content .applicant-page-grid .applicant-panel summary { padding: 12px; }
+}

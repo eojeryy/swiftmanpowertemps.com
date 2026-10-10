@@ -1,0 +1,55 @@
+.staff-edit-card {
+        max-width: 720px;
+    }
+
+    .staff-form-grid {
+        display: grid;
+        gap: 16px;
+    }
+
+    .staff-form-field label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .staff-form-field input {
+        border: 1px solid #d6e1d8;
+        border-radius: 16px;
+        font: inherit;
+        padding: 14px 16px;
+        width: 100%;
+    }
+
+    .staff-form-note {
+        color: #68786f;
+        margin: 0;
+    }
+
+    .staff-form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .staff-btn {
+        border-radius: 12px;
+        display: inline-flex;
+        font-weight: 800;
+        padding: 14px 18px;
+        text-decoration: none;
+    }
+
+    .staff-btn-primary {
+        background: linear-gradient(135deg, #28704c, #172b25);
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .staff-btn-secondary {
+        background: #f3f7f2;
+        border: 1px solid #d6e1d8;
+        color: #314b3c;
+    }

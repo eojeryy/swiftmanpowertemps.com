@@ -10,14 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-workspace.css') }}">
     @yield('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/internal-components.css') }}">
+    <noscript><style>
+        @media(max-width:1024px) { .admin-sidebar { position:relative; width:100%; height:auto; transform:none; visibility:visible; } .admin-mobile-toggle,.admin-sidebar-close { display:none; } }
+    </style></noscript>
 </head>
 <body>
+    <a class="workspace-skip" href="#workspace-content">Skip to main content</a>
     @php($adminUser = auth()->user())
     @php($isSuperAdmin = $adminUser?->isSuperAdmin() ?? false)
     @php($isBlogStaff = $adminUser?->isBlogStaff() ?? false)
     <div class="admin-sidebar-overlay" data-admin-sidebar-close></div>
     <div class="admin-shell">
-        <aside class="admin-sidebar" id="admin-sidebar">
+        <aside class="admin-sidebar" id="admin-sidebar" aria-label="Admin navigation">
             <div class="admin-brand">
                 <div class="admin-sidebar-head">
                     <div>
@@ -160,13 +165,13 @@
                 </div>
             </div>
 
-            <div class="admin-content">
+            <div class="admin-content" id="workspace-content" tabindex="-1">
                 @if (session('status'))
-                    <div class="flash-status">{{ session('status') }}</div>
+                    <div class="flash-status" role="status">{{ session('status') }}</div>
                 @endif
 
                 @if ($errors->any())
-                    <div class="flash-errors">
+                    <div class="flash-errors" role="alert">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -180,71 +185,8 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var body = document.body;
-            var sidebarToggle = document.querySelector('[data-admin-sidebar-toggle]');
-            var sidebarCloseTargets = document.querySelectorAll('[data-admin-sidebar-close]');
-            var navGroupToggles = document.querySelectorAll('[data-admin-nav-toggle]');
-            var mediaQuery = window.matchMedia('(max-width: 1024px)');
-
-            var updateAdminHeaderState = function () {
-                body.classList.toggle('admin-scrolled', window.scrollY > 12);
-            };
-
-            var closeSidebar = function () {
-                body.classList.remove('admin-sidebar-open');
-
-                if (sidebarToggle) {
-                    sidebarToggle.setAttribute('aria-expanded', 'false');
-                }
-            };
-
-            var toggleSidebar = function () {
-                if (! mediaQuery.matches) {
-                    return;
-                }
-
-                var isOpen = body.classList.toggle('admin-sidebar-open');
-
-                if (sidebarToggle) {
-                    sidebarToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                }
-            };
-
-            updateAdminHeaderState();
-            window.addEventListener('scroll', updateAdminHeaderState, { passive: true });
-
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', toggleSidebar);
-            }
-
-            sidebarCloseTargets.forEach(function (element) {
-                element.addEventListener('click', closeSidebar);
-            });
-
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape' && body.classList.contains('admin-sidebar-open')) {
-                    closeSidebar();
-                    sidebarToggle?.focus();
-                }
-            });
-
-            navGroupToggles.forEach(function (toggle) {
-                toggle.addEventListener('click', function () {
-                    var group = toggle.closest('[data-admin-nav-group]');
-                    var isOpen = group.classList.toggle('open');
-                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                });
-            });
-
-            window.addEventListener('resize', function () {
-                if (! mediaQuery.matches) {
-                    closeSidebar();
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('assets/js/workspace-navigation.js') }}" defer></script>
+    <script src="{{ asset('assets/js/internal-tables.js') }}" defer></script>
     @yield('scripts')
 </body>
 </html>
