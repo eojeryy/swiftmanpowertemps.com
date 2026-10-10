@@ -20,7 +20,7 @@
         <h3>{{ $jobRequest->position_hiring_for }}</h3>
         <p class="request-summary-text">{{ $jobRequest->company_name }} submitted this request through the public place-job form.</p>
 
-        <div class="request-summary">{{ $jobRequest->message ?: 'No extra job description was provided by the employer.' }}</div>
+        <div class="request-summary">{!! \App\Support\RichText::html($jobRequest->message) ?: '<p>No extra job description was provided by the employer.</p>' !!}</div>
     </div>
 
     <div class="admin-card request-panel">

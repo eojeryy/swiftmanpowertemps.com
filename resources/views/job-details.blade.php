@@ -514,7 +514,7 @@
                             <span class="top-title">{{ $job->category }} Opportunity</span>
                             <h2>{{ $job->title }}</h2>
                         </div>
-                        <p>{{ $job->description }}</p>
+                        <div class="job-description rich-description">{!! \App\Support\RichText::html($job->description) !!}</div>
                         <p>This opening is currently being hired for by {{ $job->company_name }} through Swift Manpower Temps Agency Ltd.</p>
                     </div>
 

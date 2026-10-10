@@ -105,8 +105,15 @@ Route::post('/place-job', function (Request $request) use ($officialEmails) {
         'preferred_pronoun' => ['nullable', 'string', 'max:120'],
         'openings_count' => ['nullable', 'string', 'max:50'],
         'subject' => ['required', 'string', 'max:255'],
-        'message' => ['nullable', 'string', 'max:5000'],
+        'message' => ['nullable', 'string', 'max:50000'],
     ]);
+
+    $validated['message'] = \App\Support\RichText::html($validated['message'] ?? null);
+    if (mb_strlen(\App\Support\RichText::plainText($validated['message'])) > 5000) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'message' => 'Please keep the job description to 5,000 characters or fewer.',
+        ]);
+    }
 
     $contactName = trim($validated['contact_first_name'].' '.$validated['contact_last_name']);
     $jobRequest = null;

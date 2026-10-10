@@ -95,7 +95,7 @@
                                 <tr>
                                     <td style="padding:24px 24px 18px;">
                                         <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fca5a5;margin-bottom:10px;">Job Details</div>
-                                        <div style="font-size:15px;line-height:1.8;color:#e5e7eb;">{{ $jobRequest->message ?: 'No additional job details were provided by the employer.' }}</div>
+                                        <div style="font-size:15px;line-height:1.8;color:#e5e7eb;">{!! \App\Support\RichText::html($jobRequest->message) ?: '<p>No additional job details were provided by the employer.</p>' !!}</div>
                                     </td>
                                 </tr>
                             </table>

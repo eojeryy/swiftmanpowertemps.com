@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EmployerJobRequest;
 use App\Models\JobOpening;
+use App\Support\RichText;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -91,7 +92,7 @@ class SuperAdminEmployerJobRequestController extends Controller
     protected function buildSummary(EmployerJobRequest $jobRequest): string
     {
         if ($jobRequest->message) {
-            return Str::limit(strip_tags($jobRequest->message), 220, '...');
+            return Str::limit(RichText::plainText($jobRequest->message), 220, '...');
         }
 
         return $jobRequest->company_name.' is hiring for '.$jobRequest->position_hiring_for.' in '.$jobRequest->job_location.'.';
@@ -100,7 +101,6 @@ class SuperAdminEmployerJobRequestController extends Controller
     protected function buildDescription(EmployerJobRequest $jobRequest): string
     {
         $lines = array_filter([
-            $jobRequest->message,
             'Company: '.$jobRequest->company_name,
             'Industry: '.$jobRequest->industry,
             'Location: '.$jobRequest->job_location,
@@ -109,7 +109,7 @@ class SuperAdminEmployerJobRequestController extends Controller
             $jobRequest->website ? 'Company website: '.$jobRequest->website : null,
         ]);
 
-        return implode("\n\n", $lines);
+        return RichText::html($jobRequest->message).implode('', array_map(fn ($line) => '<p>'.e($line).'</p>', $lines));
     }
 
     protected function buildResponsibilities(EmployerJobRequest $jobRequest): array
@@ -117,7 +117,7 @@ class SuperAdminEmployerJobRequestController extends Controller
         return array_values(array_filter([
             'Support '.$jobRequest->company_name.' as a '.$jobRequest->position_hiring_for.' in '.$jobRequest->job_location.'.',
             'Work within the '.$jobRequest->specialization.' area and help meet day-to-day business needs.',
-            $jobRequest->message ? Str::limit(strip_tags($jobRequest->message), 180, '...') : null,
+            $jobRequest->message ? Str::limit(RichText::plainText($jobRequest->message), 180, '...') : null,
         ]));
     }
 
@@ -125,7 +125,6 @@ class SuperAdminEmployerJobRequestController extends Controller
     {
         return array_values(array_filter([
             'Candidates should be comfortable with '.$jobRequest->specialization.' work requirements.',
-            $jobRequest->preferred_pronoun ? 'Preferred candidate focus: '.$jobRequest->preferred_pronoun.'.' : null,
             $jobRequest->pay_rate ? 'Role discussed with compensation guidance of '.$jobRequest->pay_rate.'.' : null,
             'Applicants should be ready to work in '.$jobRequest->job_location.'.',
         ]));

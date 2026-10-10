@@ -255,4 +255,10 @@
             padding: 22px;
         }
     }
+    .request-summary p { margin: 0 0 12px; }
+    .request-summary ul { list-style: disc; padding-left: 24px; }
+    .request-summary ol { list-style: decimal; padding-left: 24px; }
+    .request-summary li { list-style: inherit; margin-bottom: 6px; }
+    .request-summary h2, .request-summary h3 { margin: 18px 0 10px; }
+    .request-summary a { text-decoration: underline; }
 </style>

@@ -61,7 +61,7 @@
         $employmentTypes = ['full time' => 'FULL_TIME', 'full-time' => 'FULL_TIME', 'part time' => 'PART_TIME', 'part-time' => 'PART_TIME', 'contract' => 'CONTRACTOR', 'temporary' => 'TEMPORARY'];
         $jobSchema = [
             '@context' => 'https://schema.org', '@type' => 'JobPosting', 'title' => $job->title,
-            'description' => '<p>'.e($job->description).'</p><h2>Responsibilities</h2><ul>'.collect($job->responsibilities ?? [])->map(fn ($item) => '<li>'.e($item).'</li>')->implode('').'</ul><h2>Requirements</h2><ul>'.collect($job->requirements ?? [])->map(fn ($item) => '<li>'.e($item).'</li>')->implode('').'</ul>',
+            'description' => \App\Support\RichText::html($job->description).'<h2>Responsibilities</h2><ul>'.collect($job->responsibilities ?? [])->map(fn ($item) => '<li>'.e($item).'</li>')->implode('').'</ul><h2>Requirements</h2><ul>'.collect($job->requirements ?? [])->map(fn ($item) => '<li>'.e($item).'</li>')->implode('').'</ul>',
             'datePosted' => ($job->published_at ?? $job->created_at)->toIso8601String(),
             'hiringOrganization' => ['@type' => 'Organization', 'name' => $job->company_name],
             'jobLocation' => ['@type' => 'Place', 'name' => $job->location, 'address' => ['@type' => 'PostalAddress', 'addressLocality' => trim(explode(',', $job->location)[0]), 'addressCountry' => 'CA']],

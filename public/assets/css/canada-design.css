@@ -141,3 +141,9 @@ body .page-title { background:#f0f3e9 !important; padding:65px 0 55px; }
 .founder-photo img { width:100%; max-height:500px; object-fit:cover; border-radius:12px; }
 .founder-photo figcaption { font-size:12px; color:var(--swift-muted); margin-top:12px; }
 .swift-cta .swift-btn-outline:hover { color:var(--swift-ink) !important; }
+.job-description ul { list-style:disc outside; padding-left:24px; margin-bottom:16px; }
+.job-description ol { list-style:decimal outside; padding-left:24px; margin-bottom:16px; }
+.job-description li { list-style:inherit; margin-bottom:6px; }
+.job-description h2,.job-description h3 { margin:20px 0 12px; font-size:24px; }
+.job-description a { text-decoration:underline; color:#456c2c; }
+.job-description blockquote { border-left:3px solid #90b467; padding-left:16px; margin:16px 0; }
