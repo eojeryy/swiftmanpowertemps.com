@@ -483,8 +483,8 @@
                         <span>core responsibility areas</span>
                     </div>
                     <div class="detail-metric">
-                        <strong>24h</strong>
-                        <span>target review turnaround</span>
+                        <strong>Apply</strong>
+                        <span>submit your resume online</span>
                     </div>
                     <div class="detail-metric">
                         <strong>2</strong>
@@ -546,7 +546,7 @@
                                 <li>Direct follow-up</li>
                             </ul>
                             <div class="detail-apply-actions">
-                                <a href="{{ route('apply.now') }}" class="theme-btn-one">Apply Now</a>
+                                <a href="{{ route('apply.now', ['job_number' => $job->id]) }}" class="theme-btn-one">Apply Now</a>
                                 <a href="{{ route('job.openings') }}" class="theme-btn-two">Back to Openings</a>
                             </div>
                         </div>
@@ -559,6 +559,7 @@
                     <h3>Job Summary</h3>
                     <ul class="summary-list">
                         <li><span>Location</span><strong>{{ $job->location }}</strong></li>
+                        <li><span>Published</span><strong>{{ ($job->published_at ?? $job->created_at)->format('M j, Y') }}</strong></li>
                         <li><span>Type</span><strong>{{ $job->employment_type }}</strong></li>
                         <li><span>Schedule</span><strong>{{ $job->schedule ?: 'Flexible based on employer needs' }}</strong></li>
                         <li><span>Company</span><strong>{{ $job->company_name }}</strong></li>

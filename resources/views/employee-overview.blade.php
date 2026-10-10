@@ -1,195 +1,122 @@
 @extends('layouts.app')
-
-@section('title', 'Employee Overview | Swift Manpower Temps Agency Ltd')
-
+@section('title', 'Find Work in Canada | Swift Manpower Temps Agency')
 @section('content')
-<section class="page-title" style="background-image: url({{ asset('assets/images/background/page-title-2.jpg') }});">
-    <div class="pattern-layer" style="background-image: url({{ asset('assets/images/shape/pattern-35.png') }});"></div>
-    <div class="auto-container">
-        <div class="content-box">
-            <div class="title-box centred">
-                <h1>Job Seekers Overview</h1>
-                <p>Support for candidates looking for temporary, contract, and long-term work opportunities.</p>
-            </div>
-            <ul class="bread-crumb clearfix">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li>Job Seekers</li>
-                <li>Overview</li>
-            </ul>
-        </div>
-    </div>
+<section class="swift-hero audience-hero">
+<div class="auto-container hero-grid">
+<div class="hero-copy">
+<span class="eyebrow">For job seekers in Canada</span>
+<h1>Your skills.<br>Your next opportunity.</h1>
+<p>Looking for your next role? Explore current Canadian job openings and share your experience with our Calgary recruitment team. We help you understand the opportunities and the next steps.</p>
+<div class="swift-actions">
+<a class="swift-btn swift-btn-green" href="{{ route('job.openings') }}">Browse current jobs <span aria-hidden="true">↗</span>
+</a>
+<a class="swift-text-link" href="{{ route('apply.now') }}">Submit your resume <span aria-hidden="true">→</span>
+</a>
+</div>
+</div>
+<div class="hero-visual">
+<img src="{{ asset('assets/images/resource/solutions-1.jpg') }}" alt="Candidate preparing for a new work opportunity" width="600" height="450" fetchpriority="high">
+</div>
+</div>
 </section>
-
-<section class="solutions-problems sec-pad">
-    <div class="auto-container">
-        <div class="sec-title centred">
-            <span class="top-title">Welcome to Swift Manpower Temps Agency Ltd</span>
-            <h2>A Better Path to Work Opportunities</h2>
-            <p>We help job seekers connect with employers who need dependable people across temporary, contract, and ongoing roles.</p>
-        </div>
-        <div class="carousel-box">
-            <div class="two-column-carousel owl-carousel owl-theme owl-dot-style-two owl-nav-none">
-                <div class="single-item">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="{{ asset('assets/images/resource/solutions-1.jpg') }}" alt="Candidate support"></figure>
-                        <div class="lower-content">
-                            <h3>Guidance to help you prepare for the right opportunities.</h3>
-                        </div>
-                        <div class="side-content">
-                            <div class="content-box">
-                                <span>01.</span>
-                                <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-56.png') }}" alt=""></figure>
-                            </div>
-                            <div class="overlay-box">
-                                <span>01.</span>
-                                <a href="{{ route('apply.now') }}"><i class="flaticon-right-arrow-angle"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-item">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="{{ asset('assets/images/resource/solutions-2.jpg') }}" alt="Work opportunities"></figure>
-                        <div class="lower-content">
-                            <h3>Access to roles that match your availability, skills, and goals.</h3>
-                        </div>
-                        <div class="side-content">
-                            <div class="content-box">
-                                <span>02.</span>
-                                <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-57.png') }}" alt=""></figure>
-                            </div>
-                            <div class="overlay-box">
-                                <span>02.</span>
-                                <a href="{{ route('job.openings') }}"><i class="flaticon-right-arrow-angle"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-item">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="{{ asset('assets/images/resource/solutions-1.jpg') }}" alt="Application support"></figure>
-                        <div class="lower-content">
-                            <h3>Application support that helps you move faster through the hiring process.</h3>
-                        </div>
-                        <div class="side-content">
-                            <div class="content-box">
-                                <span>03.</span>
-                                <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-56.png') }}" alt=""></figure>
-                            </div>
-                            <div class="overlay-box">
-                                <span>03.</span>
-                                <a href="{{ route('apply.now') }}"><i class="flaticon-right-arrow-angle"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-item">
-                    <div class="inner-box">
-                        <figure class="image-box"><img src="{{ asset('assets/images/resource/solutions-2.jpg') }}" alt="Staffing network"></figure>
-                        <div class="lower-content">
-                            <h3>Employer connections through a trusted staffing and recruitment network.</h3>
-                        </div>
-                        <div class="side-content">
-                            <div class="content-box">
-                                <span>04.</span>
-                                <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-57.png') }}" alt=""></figure>
-                            </div>
-                            <div class="overlay-box">
-                                <span>04.</span>
-                                <a href="{{ route('contact') }}"><i class="flaticon-right-arrow-angle"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="swift-section">
+<div class="auto-container">
+<div class="section-heading">
+<div>
+<span class="eyebrow">People-first recruitment</span>
+<h2>A little support.<br>A clearer path forward.</h2>
+</div>
+<p>Find a role that fits your skills and availability, with practical guidance from people you can speak to.</p>
+</div>
+<div class="insights-grid">
+<article class="service-info-card">
+<span class="eyebrow">01</span>
+<h3>Explore current openings</h3>
+<p>Review live vacancies, where the work is located and what each role requires. Search by job title, city or province, and employment type.</p>
+</article>
+<article class="service-info-card">
+<span class="eyebrow">02</span>
+<h3>Introduce yourself</h3>
+<p>Tell us about your skills, work experience and availability. Submit your resume so our team can learn more about what you’re looking for.</p>
+</article>
+<article class="service-info-card">
+<span class="eyebrow">03</span>
+<h3>Stay connected</h3>
+<p>Our team reviews candidate information and follows up about relevant opportunities. Placement depends on current openings and employer requirements.</p>
+</article>
+</div>
+</div>
 </section>
-
-<section class="growth-style-two bg-color-2">
-    <div class="image-column" style="background-image: url({{ asset('assets/images/background/growth-bg.jpg') }});"></div>
-    <div class="auto-container">
-        <div class="row align-items-center clearfix">
-            <div class="col-lg-6 col-md-12 col-sm-12 content-column">
-                <div id="content_block_1">
-                    <div class="content-box">
-                        <div class="sec-title">
-                            <span class="top-title">Time to grow</span>
-                            <h2>Let Us Help You Find the Right Role</h2>
-                        </div>
-                        <div class="inner-box">
-                            <div class="text">
-                                <p>Swift Manpower Temps Agency Ltd supports job seekers with practical recruitment help, clear communication, and access to current opportunities.</p>
-                                <p>Whether you are looking for short-term work, contract assignments, or a long-term placement, we help you present your strengths and move through the process with confidence.</p>
-                            </div>
-                            <ul class="list clearfix">
-                                <li>
-                                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-66.png') }}" alt=""></figure>
-                                    <h3>Understand Your Goals</h3>
-                                </li>
-                                <li>
-                                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-67.png') }}" alt=""></figure>
-                                    <h3>Match You to the Right Opportunity</h3>
-                                </li>
-                            </ul>
-                            <div class="link"><a href="{{ route('job.openings') }}"><i class="flaticon-right-arrow"></i>Explore Job Openings</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 inner-column">
-                <div class="text">
-                    <h2>Start your next move with a team that supports your application journey.</h2>
-                    <p>From first contact to placement, we stay focused on helping candidates connect with roles that suit their experience and availability.</p>
-                    <a href="{{ route('apply.now') }}" class="theme-btn-two">Apply Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="swift-section swift-soft">
+<div class="auto-container process-grid">
+<div>
+<span class="eyebrow">Getting started</span>
+<h2>Make your next<br>move with confidence.</h2>
+<p class="section-intro">Clear expectations and personal communication, from your first enquiry to your next step.</p>
+<a class="swift-text-link" href="{{ route('contact') }}">Speak with our team <span aria-hidden="true">→</span>
+</a>
+</div>
+<ol class="swift-steps">
+<li>
+<span>01</span>
+<div>
+<h3>Find a relevant vacancy</h3>
+<p>Browse current openings and review the responsibilities, requirements and location.</p>
+</div>
+</li>
+<li>
+<span>02</span>
+<div>
+<h3>Send your application</h3>
+<p>Share your contact details, work experience and resume. Include the job reference when applying for a specific role.</p>
+</div>
+</li>
+<li>
+<span>03</span>
+<div>
+<h3>Discuss the right fit</h3>
+<p>Our team reviews your application and contacts you when there is a relevant opportunity to discuss.</p>
+</div>
+</li>
+</ol>
+</div>
 </section>
-
-<section class="advantages-section">
-    <div class="pattern-layer" style="background-image: url({{ asset('assets/images/shape/pattern-46.png') }});"></div>
-    <div class="auto-container">
-        <div class="sec-title centred">
-            <span class="top-title">Benefits for Job Seekers</span>
-            <h2>Why Candidates Work With Us</h2>
-            <p>We focus on clear communication, practical support, and access to employers looking for dependable talent.</p>
-        </div>
-        <div class="four-item-carousel owl-carousel owl-theme owl-nav-none owl-dot-style-two">
-            <div class="single-item">
-                <div class="inner-box">
-                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-44.png') }}" alt=""></figure>
-                    <h3>Trusted Opportunities</h3>
-                    <p>We connect candidates with employers who need reliable workers across multiple roles.</p>
-                    <a href="{{ route('job.openings') }}"><i class="flaticon-right-arrow"></i>View Jobs</a>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="inner-box">
-                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-45.png') }}" alt=""></figure>
-                    <h3>Faster Applications</h3>
-                    <p>Our process helps reduce delays and keeps you moving toward the next hiring step.</p>
-                    <a href="{{ route('apply.now') }}"><i class="flaticon-right-arrow"></i>Apply Today</a>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="inner-box">
-                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-46.png') }}" alt=""></figure>
-                    <h3>Flexible Work Options</h3>
-                    <p>Find temporary, contract, and other roles that align with your availability.</p>
-                    <a href="{{ route('employee.overview') }}"><i class="flaticon-right-arrow"></i>Learn More</a>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="inner-box">
-                    <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-47.png') }}" alt=""></figure>
-                    <h3>Ongoing Support</h3>
-                    <p>Our team stays available to answer questions and guide you through the process.</p>
-                    <a href="{{ route('contact') }}"><i class="flaticon-right-arrow"></i>Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="swift-section">
+<div class="auto-container process-grid">
+<div>
+<span class="eyebrow">Common questions</span>
+<h2>Before you apply</h2>
+<p class="section-intro">A few useful details to help you get started.</p>
+<a href="{{ route('faq') }}" class="swift-text-link">More frequently asked questions <span aria-hidden="true">→</span>
+</a>
+</div>
+<div>
+<details class="swift-faq">
+<summary>How do I apply for a job?</summary>
+<p>Open a current job listing, review the requirements and choose Apply Now. Complete the application form and upload your resume as a PDF, DOC or DOCX file up to 1 MB.</p>
+</details>
+<details class="swift-faq">
+<summary>Can I submit a resume if I don’t see a suitable opening?</summary>
+<p>Yes. Use the application form to introduce yourself and describe the kind of work you’re looking for. For the job reference, enter General application if you are not applying to a specific vacancy.</p>
+</details>
+<details class="swift-faq">
+<summary>Does applying guarantee a placement?</summary>
+<p>Applications are reviewed against current employer needs, role requirements and candidate availability. Submitting your resume does not guarantee a placement.</p>
+</details>
+</div>
+</div>
+</section>
+<section class="swift-section swift-soft">
+<div class="auto-container">
+<div class="swift-cta">
+<div>
+<span class="eyebrow">Take the next step</span>
+<h2>Your next opportunity starts<br>with a conversation.</h2>
+<p>Explore current openings or tell our team about the work you’re looking for.</p>
+</div>
+<a class="swift-btn swift-btn-green" href="{{ route('job.openings') }}">Browse current jobs <span aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
 </section>
 @endsection

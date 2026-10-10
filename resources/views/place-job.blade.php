@@ -215,7 +215,7 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title-box centred">
-                <h1>Place Your Job</h1>
+                <h1>Request Staff in Canada</h1>
                 <p>Our team moves quickly to help you secure dependable talent for urgent or ongoing staffing needs.</p>
             </div>
             <ul class="bread-crumb clearfix">
@@ -266,14 +266,17 @@
                         </div>
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="company_name" placeholder="Company Name*" value="{{ old('company_name') }}" required>
+                                <label for="field-company_name">Company name *</label>
+                                <input id="field-company_name" type="text" name="company_name" placeholder="Company Name*" value="{{ old('company_name') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="website" placeholder="Website" value="{{ old('website') }}">
+                                <label for="field-website">Website</label>
+                                <input id="field-website" type="text" name="website" placeholder="Website" value="{{ old('website') }}">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                 <div class="select-box">
-                                    <select class="wide" name="industry">
+                                    <label for="field-industry">Industry</label>
+                                <select id="field-industry" class="wide ignore" name="industry">
                                         <option value="Warehousing" @selected(old('industry', 'Warehousing') === 'Warehousing') data-display="Industry*">Industry*</option>
                                         <option value="Warehousing" @selected(old('industry') === 'Warehousing')>Warehousing</option>
                                         <option value="Logistics" @selected(old('industry') === 'Logistics')>Logistics</option>
@@ -284,10 +287,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="company_phone" placeholder="Phone*" value="{{ old('company_phone') }}" required>
+                                <label for="field-company_phone">Company phone *</label>
+                                <input id="field-company_phone" type="text" name="company_phone" placeholder="Phone*" value="{{ old('company_phone') }}" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="company_address" placeholder="Address (eg: No,Street,City,State,Zip)" value="{{ old('company_address') }}" required>
+                                <label for="field-company_address">Company address *</label>
+                                <input id="field-company_address" type="text" name="company_address" placeholder="Street address, city, province, postal code" value="{{ old('company_address') }}" required>
                             </div>
                         </div>
                     </div>
@@ -298,23 +303,28 @@
                         <div class="title-inner">
                             <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-59.png') }}" alt=""></figure>
                             <h2>Contact Person</h2>
-                            <p>Please fill out your contact person details here.</p>
+                            <p>Tell us how to contact you about your application.</p>
                         </div>
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="contact_first_name" placeholder="First Name*" value="{{ old('contact_first_name') }}" required>
+                                <label for="field-contact_first_name">Contact first name *</label>
+                                <input id="field-contact_first_name" type="text" name="contact_first_name" placeholder="First Name*" value="{{ old('contact_first_name') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="contact_last_name" placeholder="Last Name*" value="{{ old('contact_last_name') }}" required>
+                                <label for="field-contact_last_name">Contact last name *</label>
+                                <input id="field-contact_last_name" type="text" name="contact_last_name" placeholder="Last Name*" value="{{ old('contact_last_name') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="email" name="email" placeholder="Email*" value="{{ old('email') }}" required>
+                                <label for="field-email">Email *</label>
+                                <input id="field-email" type="email" name="email" placeholder="Email*" value="{{ old('email') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="phone" placeholder="Phone*" value="{{ old('phone') }}" required>
+                                <label for="field-phone">Phone number *</label>
+                                <input id="field-phone" type="text" name="phone" placeholder="Phone*" value="{{ old('phone') }}" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="profile_link" placeholder="https://www.facebook.com/person.xxxx" value="{{ old('profile_link') }}">
+                                <label for="field-profile_link">Profile link (optional)</label>
+                                <input id="field-profile_link" type="text" name="profile_link" placeholder="https://www.facebook.com/person.xxxx" value="{{ old('profile_link') }}">
                             </div>
                         </div>
                     </div>
@@ -331,7 +341,8 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 column">
                                 <div class="form-group">
                                     <div class="select-box">
-                                        <select class="wide" name="specialization">
+                                        <label for="field-specialization">Specialization</label>
+                                <select id="field-specialization" class="wide ignore" name="specialization">
                                             <option value="Temporary Staffing" @selected(old('specialization', 'Temporary Staffing') === 'Temporary Staffing') data-display="Specialisation">Specialisation</option>
                                             <option value="Temporary Staffing" @selected(old('specialization') === 'Temporary Staffing')>Temporary Staffing</option>
                                             <option value="Direct Hire" @selected(old('specialization') === 'Direct Hire')>Direct Hire</option>
@@ -341,19 +352,23 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="job_location" placeholder="Job Location" value="{{ old('job_location') }}" required>
+                                    <label for="field-job_location">Job location *</label>
+                                <input id="field-job_location" type="text" name="job_location" placeholder="Job Location" value="{{ old('job_location') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="pay_rate" placeholder="Pay Rate Range" value="{{ old('pay_rate') }}">
+                                    <label for="field-pay_rate">Pay rate</label>
+                                <input id="field-pay_rate" type="text" name="pay_rate" placeholder="Pay Rate Range" value="{{ old('pay_rate') }}">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 column">
                                 <div class="form-group">
-                                    <input type="text" name="position_hiring_for" placeholder="Position hiring for" value="{{ old('position_hiring_for') }}" required>
+                                    <label for="field-position_hiring_for">Position hiring for *</label>
+                                <input id="field-position_hiring_for" type="text" name="position_hiring_for" placeholder="Position hiring for" value="{{ old('position_hiring_for') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="select-box">
-                                        <select class="wide" name="preferred_pronoun">
+                                        <label for="field-preferred_pronoun">Preferred pronoun</label>
+                                <select id="field-preferred_pronoun" class="wide ignore" name="preferred_pronoun">
                                             <option value="" @selected(old('preferred_pronoun', '') === '') data-display="Preferred Pronoun">Preferred Pronoun</option>
                                             <option value="No Preference" @selected(old('preferred_pronoun') === 'No Preference')>No Preference</option>
                                             <option value="He/Him" @selected(old('preferred_pronoun') === 'He/Him')>He/Him</option>
@@ -364,7 +379,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="select-box">
-                                        <select class="wide" name="openings_count">
+                                        <label for="field-openings_count">Openings count</label>
+                                <select id="field-openings_count" class="wide ignore" name="openings_count">
                                             <option value="" @selected(old('openings_count', '') === '') data-display="Number of Openings">Number of Openings</option>
                                             <option value="1" @selected(old('openings_count') === '1')>1</option>
                                             <option value="2-5" @selected(old('openings_count') === '2-5')>2-5</option>
@@ -376,11 +392,13 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 column">
                                 <div class="form-group">
-                                    <input type="text" name="subject" placeholder="Job Title / Hiring Subject*" value="{{ old('subject') }}" required>
+                                    <label for="field-subject">Subject *</label>
+                                <input id="field-subject" type="text" name="subject" placeholder="Job Title / Hiring Subject*" value="{{ old('subject') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="select-box">
-                                        <select class="wide" name="interest">
+                                        <label for="field-interest">What can we help with?</label>
+                                <select id="field-interest" class="wide ignore" name="interest">
                                             <option value="Temporary Staffing" @selected(old('interest', 'Temporary Staffing') === 'Temporary Staffing') data-display="Service Needed">Service Needed</option>
                                             <option value="Temporary Staffing" @selected(old('interest') === 'Temporary Staffing')>Temporary Staffing</option>
                                             <option value="Direct Hire" @selected(old('interest') === 'Direct Hire')>Direct Hire</option>
@@ -400,7 +418,8 @@
                                             <button type="button" data-format="quote">Quote</button>
                                             <button type="button" data-format="link">Link</button>
                                         </div>
-                                        <textarea name="message" placeholder="Job Description">{{ old('message') }}</textarea>
+                                        <label for="field-message">Additional details</label>
+                                <textarea id="field-message" name="message" placeholder="Job Description">{{ old('message') }}</textarea>
                                     </div>
                                     <small class="textarea-help">Select text and use the buttons above to add simple formatting.</small>
                                 </div>
@@ -416,36 +435,6 @@
     </div>
 </section>
 
-<section class="clients-section alternet-2">
-    <div class="outer-container">
-        <div class="clients-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-13.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-14.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-15.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-16.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-17.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-18.png') }}" alt=""></a>
-                <span class="logo-title"><a href="{{ route('home') }}">Visit Website</a></span>
-            </figure>
-        </div>
-    </div>
-</section>
 @endsection
 
 @section('scripts')

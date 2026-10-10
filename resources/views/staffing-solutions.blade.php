@@ -66,7 +66,7 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title-box centred">
-                <h1>Staffing Solutions</h1>
+                <h1>Staffing Solutions in Canada</h1>
                 <p>Explore the flexible recruitment and placement services we provide for employers and candidates.</p>
             </div>
             <ul class="bread-crumb clearfix">
@@ -127,4 +127,6 @@
         </div>
     </div>
 </section>
+<section class="swift-section"><div class="auto-container"><div class="swift-cta"><div><span class="eyebrow">For Canadian employers</span><h2>Tell us about your workforce needs.</h2><p>Share your job location, requirements and timeline with our Calgary team.</p></div><a href="{{ route('place.job') }}" class="swift-btn swift-btn-green">Request staff <span aria-hidden="true">↗</span></a></div></div></section>
+
 @endsection

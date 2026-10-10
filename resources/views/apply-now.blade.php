@@ -155,7 +155,7 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title-box centred">
-                <h1>Apply Now</h1>
+                <h1>Apply for Work in Canada</h1>
                 <p>Send your application details to Swift Manpower Temps Agency Ltd and let our team guide you to the next step.</p>
             </div>
             <ul class="bread-crumb clearfix">
@@ -203,24 +203,29 @@
                     <div class="form-inner">
                         <div class="title-inner">
                             <figure class="icon-box"><img src="{{ asset('assets/images/icons/icon-64.png') }}" alt=""></figure>
-                            <h2>Basic Infomation</h2>
-                            <p>Please fill out your contact person details here.</p>
+                            <h2>Basic Information</h2>
+                            <p>Tell us how to contact you about your application.</p>
                         </div>
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="fname" placeholder="First Name*" value="{{ $prefillFirstName }}" autocomplete="given-name" required>
+                                <label for="field-fname">First name *</label>
+                                <input id="field-fname" type="text" name="fname" placeholder="First Name*" value="{{ $prefillFirstName }}" autocomplete="given-name" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="lname" placeholder="Last Name*" value="{{ $prefillLastName }}" autocomplete="family-name" required>
+                                <label for="field-lname">Last name *</label>
+                                <input id="field-lname" type="text" name="lname" placeholder="Last Name*" value="{{ $prefillLastName }}" autocomplete="family-name" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="email" name="email" placeholder="Email*" value="{{ $prefillEmail }}" autocomplete="email" required>
+                                <label for="field-email">Email *</label>
+                                <input id="field-email" type="email" name="email" placeholder="Email*" value="{{ $prefillEmail }}" autocomplete="email" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="phone" placeholder="Phone" value="{{ old('phone') }}" autocomplete="tel" required>
+                                <label for="field-phone">Phone number *</label>
+                                <input id="field-phone" type="text" name="phone" placeholder="Phone" value="{{ old('phone') }}" autocomplete="tel" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="address" placeholder="Address (eg: No,Street,City,State,Zip)" value="{{ old('address') }}" autocomplete="street-address" required>
+                                <label for="field-address">Address *</label>
+                                <input id="field-address" type="text" name="address" placeholder="Street address, city, province, postal code" value="{{ old('address') }}" autocomplete="street-address" required>
                             </div>
                         </div>
                     </div>
@@ -235,11 +240,13 @@
                         </div>
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="education" placeholder="Education" value="{{ old('education') }}" required>
+                                <label for="field-education">Education *</label>
+                                <input id="field-education" type="text" name="education" placeholder="Education" value="{{ old('education') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                                 <div class="select-box">
-                                    <select class="wide" name="skills">
+                                    <label for="field-skills">Skills</label>
+                                <select id="field-skills" class="wide ignore" name="skills">
                                         <option value="General Skills" @selected(old('skills', 'General Skills') === 'General Skills') data-display="Skills">Skills</option>
                                         <option value="Warehouse Operations" @selected(old('skills') === 'Warehouse Operations')>Warehouse Operations</option>
                                         <option value="Administrative Support" @selected(old('skills') === 'Administrative Support')>Administrative Support</option>
@@ -249,10 +256,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="experience" placeholder="Total Experience" value="{{ old('experience') }}" required>
+                                <label for="field-experience">Experience *</label>
+                                <input id="field-experience" type="text" name="experience" placeholder="Total Experience" value="{{ old('experience') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="qualities" placeholder="Personal Qualities" value="{{ old('qualities') }}" required>
+                                <label for="field-qualities">Personal qualities *</label>
+                                <input id="field-qualities" type="text" name="qualities" placeholder="Personal Qualities" value="{{ old('qualities') }}" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                 <div class="resume-field">
@@ -278,11 +287,13 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 form-column">
                     <div class="row clearfix">
                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                            <input type="text" name="job_number" placeholder="Job Number*" value="{{ old('job_number') }}" required>
+                            <label for="field-job_number">Job reference (or General application) *</label>
+                                <input id="field-job_number" type="text" name="job_number" placeholder="Job reference or General application" value="{{ old('job_number', request('job_number')) }}" required>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                             <div class="select-box">
-                                <select class="wide" name="work_status">
+                                <label for="field-work_status">Preferred work type</label>
+                                <select id="field-work_status" class="wide ignore" name="work_status">
                                     <option value="Select Desired Work Status" @selected(old('work_status', 'Select Desired Work Status') === 'Select Desired Work Status') data-display="Select Desired Work Status">Select Desired Work Status</option>
                                     <option value="Full Time" @selected(old('work_status') === 'Full Time')>Full Time</option>
                                     <option value="Part Time" @selected(old('work_status') === 'Part Time')>Part Time</option>
@@ -301,7 +312,8 @@
                                 <button type="button" data-format="quote">Quote</button>
                                 <button type="button" data-format="link">Link</button>
                             </div>
-                            <textarea name="message" placeholder="Additional Information ...">{{ old('message') }}</textarea>
+                            <label for="field-message">Additional details</label>
+                                <textarea id="field-message" name="message" placeholder="Additional Information ...">{{ old('message') }}</textarea>
                             <small class="textarea-help">Select text and use the buttons above to add simple formatting.</small>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">

@@ -30,7 +30,7 @@ class PublicBlogController extends Controller
                 ->first();
         }
 
-        abort_unless($post, 404);
+        abort_unless($post && $post->status === 'published', 404);
 
         $relatedPosts = BlogPost::where('status', 'published')
             ->where('id', '!=', $post->id)

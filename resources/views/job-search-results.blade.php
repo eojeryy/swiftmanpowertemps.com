@@ -9,7 +9,7 @@
         <div class="content-box">
             <div class="title-box centred">
                 <h1>Job Search Results</h1>
-                <p>Results for "{{ $searchTerm }}" across job openings, job categories, and companies hiring through Swift Manpower.</p>
+                <p>Results for "{{ $searchTerm }}" across current Canadian job openings.</p>
             </div>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -18,6 +18,7 @@
         </div>
     </div>
 </section>
+<div class="auto-container" style="padding-top:32px">@include('partials.job-search')</div>
 
 <section class="news-section alternet-2 sec-pad">
     <div class="auto-container">

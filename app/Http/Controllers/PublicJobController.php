@@ -27,7 +27,7 @@ class PublicJobController extends Controller
             ->orderByDesc('created_at')
             ->first();
 
-        abort_unless($job, 404);
+        abort_unless($job && $job->status === 'active', 404);
 
         $relatedJobs = JobOpening::where('status', 'active')
             ->where('id', '!=', $job->id)
@@ -45,24 +45,32 @@ class PublicJobController extends Controller
     public function search(Request $request): View
     {
         $validated = $request->validate([
-            'q' => ['required', 'string', 'max:255'],
+            'q' => ['nullable', 'string', 'max:255'],
+            'location' => ['nullable', 'string', 'max:255'],
+            'work_status' => ['nullable', 'string', 'in:Full Time,Part Time,Contract,Temporary'],
         ]);
 
-        $term = trim($validated['q']);
+        $term = trim($validated['q'] ?? '');
+        $location = trim($validated['location'] ?? '');
+        $workType = $validated['work_status'] ?? '';
 
         $jobs = JobOpening::where('status', 'active')
-            ->where(function ($query) use ($term) {
-                $query
-                    ->where('title', 'like', '%'.$term.'%')
-                    ->orWhere('category', 'like', '%'.$term.'%')
-                    ->orWhere('company_name', 'like', '%'.$term.'%');
+            ->when($term !== '', function ($query) use ($term) {
+                $query->where(function ($query) use ($term) {
+                    $query->where('title', 'like', '%'.$term.'%')
+                        ->orWhere('category', 'like', '%'.$term.'%')
+                        ->orWhere('company_name', 'like', '%'.$term.'%')
+                        ->orWhere('summary', 'like', '%'.$term.'%');
+                });
             })
+            ->when($location !== '', fn ($query) => $query->where('location', 'like', '%'.$location.'%'))
+            ->when($workType !== '', fn ($query) => $query->whereRaw("LOWER(REPLACE(employment_type, '-', ' ')) LIKE ?", ['%'.strtolower($workType).'%']))
             ->orderByDesc('published_at')
             ->orderByDesc('created_at')
             ->get();
 
         return view('job-search-results', [
-            'searchTerm' => $term,
+            'searchTerm' => implode(' · ', array_filter([$term, $location, $workType])) ?: 'All current openings',
             'jobs' => $jobs,
             'matchingCategories' => $jobs->pluck('category')->filter()->unique()->values(),
             'matchingCompanies' => $jobs->pluck('company_name')->filter()->unique()->values(),

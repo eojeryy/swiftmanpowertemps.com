@@ -22,7 +22,7 @@
     <div class="auto-container">
         <div class="content-box">
             <div class="title-box centred">
-                <h1>Get In Touch</h1>
+                <h1>Contact Our Calgary Staffing Team</h1>
                 <p>Reach out for staffing support, recruitment help, or job placement enquiries.</p>
             </div>
             <ul class="bread-crumb clearfix">
@@ -98,17 +98,21 @@
                         @csrf
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="username" placeholder="Your Name *" value="{{ old('username') }}" required>
+                                <label for="field-username">Full name *</label>
+                                <input id="field-username" type="text" name="username" placeholder="Your Name *" value="{{ old('username') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="email" name="email" placeholder="Email Address *" value="{{ old('email') }}" required>
+                                <label for="field-email">Email *</label>
+                                <input id="field-email" type="email" name="email" placeholder="Email Address *" value="{{ old('email') }}" required>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="phone" required placeholder="Phone *" value="{{ old('phone') }}">
+                                <label for="field-phone">Phone number *</label>
+                                <input id="field-phone" type="text" name="phone" required placeholder="Phone *" value="{{ old('phone') }}">
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 form-group">
                                 <div class="select-box">
-                                    <select class="wide" name="interest">
+                                    <label for="field-interest">What can we help with?</label>
+                                <select id="field-interest" class="wide ignore" name="interest">
                                         <option value="Hiring Employees" @selected(old('interest', 'Hiring Employees') === 'Hiring Employees') data-display="Hiring Employees">Hiring Employees</option>
                                         <option value="Job Placement" @selected(old('interest') === 'Job Placement')>Job Placement</option>
                                         <option value="Temporary Staffing" @selected(old('interest') === 'Temporary Staffing')>Temporary Staffing</option>
@@ -117,10 +121,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="subject" required placeholder="Subject" value="{{ old('subject') }}">
+                                <label for="field-subject">Subject *</label>
+                                <input id="field-subject" type="text" name="subject" required placeholder="Subject" value="{{ old('subject') }}">
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <textarea name="message" placeholder="Message ...">{{ old('message') }}</textarea>
+                                <label for="field-message">Additional details</label>
+                                <textarea id="field-message" name="message" placeholder="Message ...">{{ old('message') }}</textarea>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
                                 <button class="theme-btn-one" type="submit" name="submit-form">Send Message</button>
@@ -210,35 +216,5 @@
     </div>
 </section>
 
-<section class="clients-style-two" style="background-image: url({{ asset('assets/images/background/clients-1.jpg') }});">
-    <div class="auto-container">
-        <div class="title-inner centred">
-            <h2>Need qualified staffing support or new job opportunities?</h2>
-            <div class="btn-box">
-                <a href="{{ route('about.company') }}" class="btn-one">Hire</a>
-                <a href="{{ route('about.team') }}" class="btn-two">Meet Our Team</a>
-            </div>
-        </div>
-        <div class="clients-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-7.png') }}" alt=""></a>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-8.png') }}" alt=""></a>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-9.png') }}" alt=""></a>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-10.png') }}" alt=""></a>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-11.png') }}" alt=""></a>
-            </figure>
-            <figure class="clients-logo-box">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/clients/clients-logo-12.png') }}" alt=""></a>
-            </figure>
-        </div>
-    </div>
-</section>
+<section class="swift-section swift-soft"><div class="auto-container"><div class="swift-cta"><div><span class="eyebrow">Let’s get started</span><h2>People for your business.<br>Opportunities for your future.</h2><p>Choose the next step that’s right for you.</p></div><div class="swift-actions"><a class="swift-btn swift-btn-green" href="{{ route('place.job') }}">Request staff <span aria-hidden="true">↗</span></a><a class="swift-btn swift-btn-outline" href="{{ route('job.openings') }}" style="color:white">Find work <span aria-hidden="true">→</span></a></div></div></div></section>
 @endsection

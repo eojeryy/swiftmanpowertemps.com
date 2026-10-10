@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'sitemap'])->name('seo.sitemap');
+Route::get('/robots.txt', [\App\Http\Controllers\SeoController::class, 'robots'])->name('seo.robots');
+
 $officialEmails = [
     'monica@swiftmanpowertemps.com',
     'fabian@swiftmanpowertemps.com',
@@ -34,23 +37,8 @@ Route::get('/', function () {
         ->orderByDesc('created_at')
         ->take(3)
         ->get();
-    $partnerTestimonials = EmployerJobRequest::query()
-        ->whereNotNull('message')
-        ->where('message', '!=', '')
-        ->where('status', 'approved')
-        ->latest()
-        ->take(24)
-        ->get()
-        ->unique(function (EmployerJobRequest $request): string {
-            return strtolower(preg_replace('/\s+/', ' ', trim($request->company_name)));
-        })
-        ->take(6)
-        ->values();
 
-    return view('index', [
-        'featuredPosts' => $featuredPosts,
-        'partnerTestimonials' => $partnerTestimonials,
-    ]);
+    return view('index', ['featuredPosts' => $featuredPosts]);
 })->name('home');
 
 Route::get('/about-company', function () {
@@ -163,9 +151,7 @@ Route::get('/job-search', [PublicJobController::class, 'search'])->name('jobs.se
 
 Route::get('/blog-grid', [PublicBlogController::class, 'index'])->name('blog.grid');
 
-Route::get('/blog-list', function () {
-    return view('blog-list');
-})->name('blog.list');
+Route::redirect('/blog-list', '/blog-grid', 301)->name('blog.list');
 
 Route::get('/blog-details', [PublicBlogController::class, 'show'])->name('blog.details');
 Route::get('/blog-details/{blog}', [PublicBlogController::class, 'show'])->name('blog.details.show');
