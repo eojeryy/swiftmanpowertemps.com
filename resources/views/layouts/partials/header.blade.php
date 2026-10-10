@@ -1,4 +1,5 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
+<div class="site-header-shell">
 <div class="site-topbar">
 <div class="auto-container">
 <span>Connecting people. Supporting Canadian businesses.</span>
@@ -40,3 +41,5 @@
 </details>
     </div>
 </header>
+</div>
+<div class="site-header-spacer" aria-hidden="true"></div>

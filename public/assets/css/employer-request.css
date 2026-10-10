@@ -8,7 +8,7 @@
 .employer-request-form { min-width:0; }
 .required-note { margin-bottom:18px; font-size:12px; }
 .required-note > span,.employer-field label > span:not(.field-optional) { color:#556b40; }
-.request-panel { min-width:0; margin:0 0 28px; padding:28px; background:white; border:1px solid #dfe6dc; border-radius:12px; scroll-margin-top:120px; }
+.request-panel { min-width:0; margin:0 0 28px; padding:28px; background:white; border:1px solid #dfe6dc; border-radius:12px; scroll-margin-top:16px; }
 .request-panel legend { float:left; display:flex; align-items:center; gap:12px; width:100%; padding:0; margin:0 0 12px; color:#172b25; font-size:22px; font-weight:900; line-height:1.3; }
 .request-step { display:inline-grid; place-items:center; width:35px; height:35px; background:#edf3e4; color:#4e742f; border-radius:9px; font-size:12px; letter-spacing:.04em; flex-shrink:0; }
 .panel-intro { clear:both; font-size:14px; margin-bottom:25px; }
@@ -63,7 +63,7 @@
 .request-submit p { font-size:12px; margin:7px 0 0; }
 .request-submit .field-error { width:100%; }
 .request-submit button:disabled { cursor:wait; opacity:.65; transform:none; }
-.request-sidebar { position:sticky; top:120px; padding-top:38px; }
+.request-sidebar { position:sticky; top:calc(var(--site-header-height, 131px) + 20px); padding-top:38px; }
 .request-sidebar-card,.request-support-card { padding:25px; border:1px solid #dfe6dc; border-radius:12px; background:#fff; margin-bottom:18px; }
 .request-sidebar h2 { font-size:22px; font-weight:900; letter-spacing:-.6px; line-height:1.3; margin-bottom:14px; }
 .request-sidebar p { font-size:13px; }
@@ -79,7 +79,7 @@
 .request-section-links span { font-size:11px; color:#6d963e; }
 .request-support-card { background:#edf3e4; }
 .request-support-card > a { display:flex; justify-content:space-between; gap:12px; color:#3a6027; font-size:13px; font-weight:800; margin-top:15px; }
-.request-feedback { padding:25px; margin-bottom:30px; border:1px solid #b4d79c; background:#eff8e9; border-radius:10px; scroll-margin-top:120px; }
+.request-feedback { padding:25px; margin-bottom:30px; border:1px solid #b4d79c; background:#eff8e9; border-radius:10px; scroll-margin-top:16px; }
 .request-feedback h2 { font-size:21px; font-weight:800; margin-bottom:10px; }
 .request-feedback p,.request-feedback a { font-size:14px; }
 .request-feedback a { color:#41652e; text-decoration:underline; }
