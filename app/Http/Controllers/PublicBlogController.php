@@ -12,7 +12,9 @@ class PublicBlogController extends Controller
         $posts = BlogPost::where('status', 'published')
             ->orderByDesc('published_at')
             ->orderByDesc('created_at')
-            ->get();
+            ->paginate(9);
+
+        abort_if($posts->currentPage() > 1 && $posts->isEmpty(), 404);
 
         return view('blog-grid', [
             'posts' => $posts,

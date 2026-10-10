@@ -18,6 +18,7 @@
             <a href="{{ route('employee.overview') }}" @if(request()->routeIs('employee.overview', 'apply.now')) aria-current="page" @endif>For job seekers</a>
             <a href="{{ route('job.openings') }}" @if(request()->routeIs('job.openings', 'job.details*', 'jobs.search')) aria-current="page" @endif>Find jobs</a>
             <a href="{{ route('about.company') }}" @if(request()->routeIs('about.*')) aria-current="page" @endif>About us</a>
+            <a href="{{ route('blog.grid') }}" @if(request()->routeIs('blog.*')) aria-current="page" @endif>Blog</a>
             <a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a>
         </nav>
         <a href="{{ route('place.job') }}" class="swift-btn swift-btn-dark header-cta">Hire staff <span aria-hidden="true">↗</span>
@@ -32,6 +33,7 @@
 <a href="{{ route('job.openings') }}">Find jobs</a>
 <a href="{{ route('place.job') }}">Hire staff</a>
 <a href="{{ route('about.company') }}">About us</a>
+<a href="{{ route('blog.grid') }}">Blog</a>
 <a href="{{ route('contact') }}">Contact</a>
 <a href="{{ route('employee.sign-in') }}">Candidate sign in</a>
         </nav>

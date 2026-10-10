@@ -1,0 +1,4 @@
+<div class="blog-resource-grid">
+    <article class="service-info-card"><span class="eyebrow">For employers</span><h3>Make your next hiring brief clearer.</h3><p>Start with the job location, responsibilities, required skills and work schedule. Clear expectations help candidates understand the role and help our team find a suitable match.</p><a class="swift-text-link" href="{{ route('employer.overview') }}">Explore hiring support <span aria-hidden="true">→</span></a></article>
+    <article class="service-info-card"><span class="eyebrow">For job seekers</span><h3>Prepare for your next opportunity.</h3><p>Keep your resume current, highlight relevant experience and know your availability. Review each Canadian job posting for its location and requirements before applying.</p><a class="swift-text-link" href="{{ route('employee.overview') }}">Explore candidate support <span aria-hidden="true">→</span></a></article>
+</div>

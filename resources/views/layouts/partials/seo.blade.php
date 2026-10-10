@@ -26,9 +26,13 @@
         $socialImage = asset($job->image_path ?: 'assets/images/banner/banner-7.jpg');
     } elseif (isset($post)) {
         $seoTitle = $post->title.' | Swift Manpower';
-        $seoDescription = \Illuminate\Support\Str::limit(strip_tags($post->excerpt ?: $post->content), 160);
+        $seoDescription = \Illuminate\Support\Str::limit(\App\Support\RichText::plainText($post->excerpt ?: $post->content), 160);
         $canonical = route('blog.details.show', $post);
         $socialImage = asset($post->image_path ?: 'assets/images/banner/banner-7.jpg');
+    }
+    if (isset($posts) && $posts instanceof \Illuminate\Pagination\LengthAwarePaginator && $posts->currentPage() > 1) {
+        $canonical = route('blog.grid', ['page' => $posts->currentPage()]);
+        $seoTitle .= ' | Page '.$posts->currentPage();
     }
     $noindex = request()->routeIs('jobs.search', 'employee.sign-*', 'employee.dashboard', 'super-admin.*');
     $organization = [
@@ -74,5 +78,28 @@
     <script type="application/ld+json">{!! json_encode($jobSchema, $jsonFlags) !!}</script>
 @endif
 @if(isset($post))
-    <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@type' => 'BlogPosting', 'headline' => $post->title, 'description' => $seoDescription, 'image' => $socialImage, 'datePublished' => ($post->published_at ?? $post->created_at)->toIso8601String(), 'dateModified' => $post->updated_at->toIso8601String(), 'mainEntityOfPage' => $canonical, 'publisher' => ['@id' => route('home').'#organization']], $jsonFlags) !!}</script>
+    @php
+        $articleSchema = [
+            '@context' => 'https://schema.org', '@type' => 'BlogPosting',
+            '@id' => $canonical.'#article', 'headline' => $post->title,
+            'description' => $seoDescription, 'image' => $socialImage,
+            'datePublished' => ($post->published_at ?? $post->created_at)->toIso8601String(),
+            'dateModified' => ($post->updated_at ?? $post->published_at ?? $post->created_at)->toIso8601String(),
+            'mainEntityOfPage' => $canonical, 'inLanguage' => 'en-CA',
+            'author' => ['@type' => 'Organization', 'name' => 'Swift Manpower Temps Agency Ltd', 'url' => route('about.team')],
+            'publisher' => ['@id' => route('home').'#organization'],
+        ];
+        $breadcrumbSchema = [
+            '@context' => 'https://schema.org', '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => route('blog.grid')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $post->title, 'item' => $canonical],
+            ],
+        ];
+    @endphp
+    <meta property="article:published_time" content="{{ $articleSchema['datePublished'] }}">
+    <meta property="article:modified_time" content="{{ $articleSchema['dateModified'] }}">
+    <script type="application/ld+json">{!! json_encode($articleSchema, $jsonFlags) !!}</script>
+    <script type="application/ld+json">{!! json_encode($breadcrumbSchema, $jsonFlags) !!}</script>
 @endif

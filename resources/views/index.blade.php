@@ -129,32 +129,8 @@
 </ol>
 </div>
 </section>
-@if($featuredPosts->isNotEmpty())
-<section class="swift-section swift-soft">
-<div class="auto-container">
-<div class="section-heading">
-<div>
-<span class="eyebrow">From our team</span>
-<h2>Hiring &amp; career insights.</h2>
-</div>
-<a class="swift-text-link" href="{{ route('blog.grid') }}">Explore our resources <span aria-hidden="true">→</span>
-</a>
-</div>
-<div class="insights-grid">@foreach($featuredPosts as $article)<article class="insight-card">
-<a href="{{ route('blog.details.show', $article) }}">
-<img src="{{ asset($article->image_path ?: 'assets/images/news/news-1.jpg') }}" alt="" loading="lazy" width="400" height="240">
-<div>
-<span class="eyebrow">{{ $article->category ?: 'Insights' }}</span>
-<h3>{{ $article->title }}</h3>
-<p>{{ \Illuminate\Support\Str::limit(strip_tags($article->excerpt), 130) }}</p>
-<span class="swift-text-link">Read article <span aria-hidden="true">↗</span>
-</span>
-</div>
-</a>
-</article>@endforeach</div>
-</div>
-</section>
-@endif
+@include('partials.blog-section', ['blogPosts' => $featuredPosts])
+
 <section class="swift-section">
 <div class="auto-container">
 <div class="swift-cta">
