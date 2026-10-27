@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class SuperAdminBlogController extends Controller
@@ -23,14 +24,14 @@ class SuperAdminBlogController extends Controller
     {
         return view('super-admin.blogs.create', [
             'categories' => BlogCategory::where('status', 'active')->orderBy('name')->get(),
-            'post' => new BlogPost(),
+            'post' => new BlogPost,
         ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $this->validatedData($request);
-        $data['slug'] = $this->generateUniqueSlug($data['title']);
+        $data['slug'] = $data['slug'] ?? $this->generateUniqueSlug($data['title']);
         $data['published_at'] = $this->resolvePublishedAt($data['status'], $data['published_at'] ?? null);
         $data['image_path'] = $this->storeUploadedImage($request);
 
@@ -58,8 +59,8 @@ class SuperAdminBlogController extends Controller
 
     public function update(Request $request, BlogPost $blog): RedirectResponse
     {
-        $data = $this->validatedData($request);
-        $data['slug'] = $this->generateUniqueSlug($data['title'], $blog->id);
+        $data = $this->validatedData($request, $blog);
+        $data['slug'] = $data['slug'] ?? $blog->slug;
         $data['published_at'] = $this->resolvePublishedAt($data['status'], $data['published_at'] ?? null);
         $data['image_path'] = $blog->image_path;
 
@@ -86,10 +87,17 @@ class SuperAdminBlogController extends Controller
             ->with('status', '"'.$title.'" was deleted successfully.');
     }
 
-    protected function validatedData(Request $request): array
+    protected function validatedData(Request $request, ?BlogPost $blog = null): array
     {
         return $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'slug' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', Rule::unique('blog_posts', 'slug')->ignore($blog?->id)],
+            'seo_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string', 'max:400'],
+            'primary_keyword' => ['nullable', 'string', 'max:255'],
+            'target_audience' => ['nullable', 'string', 'max:255'],
+            'search_intent' => ['nullable', Rule::in(['informational', 'commercial', 'informational-commercial', 'transactional', 'navigational'])],
+            'image_alt' => ['nullable', 'string', 'max:255'],
             'category' => ['required', 'string', 'exists:blog_categories,name', 'max:100'],
             'excerpt' => ['required', 'string', 'max:400'],
             'content' => ['required', 'string'],

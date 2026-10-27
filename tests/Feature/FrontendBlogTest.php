@@ -88,4 +88,28 @@ class FrontendBlogTest extends TestCase
         $breadcrumb = $schemas->firstWhere('@type', 'BreadcrumbList');
         $this->assertSame(route('blog.grid'), $breadcrumb['itemListElement'][1]['item']);
     }
+
+    public function test_article_uses_custom_seo_settings_and_image_alt_text(): void
+    {
+        $post = $this->article([
+            'seo_title' => 'Why Canadian Employers Should Post Jobs Online in 2026: 7 Key Benefits',
+            'meta_description' => 'Learn how posting jobs online helps Canadian employers reach qualified candidates.',
+            'primary_keyword' => 'Post jobs online in Canada',
+            'target_audience' => 'Canadian employers, recruiters, HR managers',
+            'image_path' => 'storage/uploads/blogs/employers.webp',
+            'image_alt' => 'Canadian employers posting jobs online to recruit qualified candidates in 2026.',
+        ]);
+        $html = view('blog-details', ['post' => $post, 'relatedPosts' => collect()])->render();
+
+        $this->assertStringContainsString('<title>'.$post->seo_title.'</title>', $html);
+        $this->assertStringContainsString('property="og:title" content="'.$post->seo_title.'"', $html);
+        $this->assertStringContainsString('name="description" content="'.$post->meta_description.'"', $html);
+        $this->assertStringContainsString('alt="'.$post->image_alt.'"', $html);
+        preg_match_all('/<script type="application\/ld\+json">(.*?)<\/script>/s', $html, $matches);
+        $schemas = collect(array_map(fn ($json) => json_decode($json, true, 512, JSON_THROW_ON_ERROR), $matches[1]));
+        $schema = $schemas->firstWhere('@type', 'BlogPosting');
+        $this->assertSame($post->primary_keyword, $schema['keywords']);
+        $this->assertSame($post->target_audience, $schema['audience']['audienceType']);
+        $this->assertSame($post->category, $schema['articleSection']);
+    }
 }

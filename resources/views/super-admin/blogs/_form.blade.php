@@ -62,6 +62,52 @@
                 @error('content')<p class="workspace-field-error" id="content-error">{{ $message }}</p>@enderror
             </div>
         </div>
+        <div class="form-section-title">
+            <h3>SEO &amp; audience</h3>
+            <span>Optional publishing settings. Use the keyword naturally in your title, introduction and headings.</span>
+        </div>
+
+        <div class="form-field">
+            <label for="primary_keyword">Primary keyword</label>
+            <input id="primary_keyword" name="primary_keyword" type="text" maxlength="255" value="{{ old('primary_keyword', $post->primary_keyword) }}" placeholder="e.g. Post jobs online in Canada">
+            @error('primary_keyword')<p class="workspace-field-error">{{ $message }}</p>@enderror
+        </div>
+        <div class="form-field">
+            <label for="seo_title">SEO title</label>
+            <input id="seo_title" name="seo_title" type="text" maxlength="255" value="{{ old('seo_title', $post->seo_title) }}" placeholder="e.g. Why Canadian Employers Should Post Jobs Online in 2026: 7 Key Benefits">
+            <small class="field-note">Leave blank to use the blog title with the site name. Keep it clear and concise; long titles may be shortened in search results.</small>
+            @error('seo_title')<p class="workspace-field-error">{{ $message }}</p>@enderror
+        </div>
+        <div class="form-field">
+            <label for="slug">URL slug</label>
+            <input id="slug" name="slug" type="text" maxlength="255" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="{{ old('slug', $post->slug) }}" placeholder="why-canadian-employers-should-post-jobs-online-2026">
+            <small class="field-note">Lowercase letters, numbers and hyphens. Generated from the title on creation if blank. Keep published slugs stable to preserve existing links.</small>
+            @error('slug')<p class="workspace-field-error">{{ $message }}</p>@enderror
+        </div>
+        <div class="form-field">
+            <label for="meta_description">Meta description</label>
+            <textarea id="meta_description" name="meta_description" maxlength="400" rows="3">{{ old('meta_description', $post->meta_description) }}</textarea>
+            <small class="field-note">Summarize the benefit to readers in roughly 150–160 characters. Uses the excerpt if blank.</small>
+            @error('meta_description')<p class="workspace-field-error">{{ $message }}</p>@enderror
+        </div>
+        <div class="form-grid-two">
+            <div class="form-field">
+                <label for="target_audience">Target audience</label>
+                <input id="target_audience" name="target_audience" type="text" maxlength="255" value="{{ old('target_audience', $post->target_audience) }}" placeholder="Canadian employers, recruiters, HR managers">
+                @error('target_audience')<p class="workspace-field-error">{{ $message }}</p>@enderror
+            </div>
+            <div class="form-field">
+                <label for="search_intent">Search intent</label>
+                <select id="search_intent" name="search_intent">
+                    <option value="">Select intent (optional)</option>
+                    @foreach (['informational' => 'Informational', 'commercial' => 'Commercial', 'informational-commercial' => 'Informational and commercial', 'transactional' => 'Transactional', 'navigational' => 'Navigational'] as $value => $label)
+                        <option value="{{ $value }}" @selected(old('search_intent', $post->search_intent) === $value)>{{ $label }}</option>
+                    @endforeach
+                </select>
+                <small class="field-note">An editorial guide for writing the article.</small>
+                @error('search_intent')<p class="workspace-field-error">{{ $message }}</p>@enderror
+            </div>
+        </div>
     </div>
 
     <div class="form-side-stack">
@@ -89,6 +135,13 @@
                     value="{{ old('published_at', optional($post->published_at)->format('Y-m-d\TH:i')) }}"
                  aria-invalid="{{ $errors->has('published_at') ? 'true' : 'false' }}" @if($errors->has('published_at')) aria-describedby="published_at-error" @endif>
                 @error('published_at')<p class="workspace-field-error" id="published_at-error">{{ $message }}</p>@enderror
+            </div>
+
+            <div class="form-field">
+                <label for="image_alt">Image alt text</label>
+                <input id="image_alt" name="image_alt" type="text" maxlength="255" value="{{ old('image_alt', $post->image_alt) }}" placeholder="Describe what the blog picture shows">
+                <small class="field-note">Describe the actual image for readers using screen readers. Include the keyword only when it fits the image.</small>
+                @error('image_alt')<p class="workspace-field-error">{{ $message }}</p>@enderror
             </div>
 
             <div class="form-field">

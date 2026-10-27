@@ -35,7 +35,7 @@
 <section class="swift-section blog-article-section">
     <div class="auto-container blog-reading-layout">
         <article class="blog-reading-content" aria-label="{{ $post->title }}">
-            <img class="blog-cover" src="{{ asset($post->image_path ?: 'assets/images/news/news-1.jpg') }}" alt="" width="900" height="500" fetchpriority="high">
+            <img class="blog-cover" src="{{ asset($post->image_path ?: 'assets/images/news/news-1.jpg') }}" alt="{{ $post->image_path ? ($post->image_alt ?: '') : '' }}" width="900" height="500" fetchpriority="high">
             <div class="blog-rich-content">{!! \App\Support\RichText::html($post->content) !!}</div>
             <div class="blog-article-footer">
 <p>Looking for support with your next step? Our Calgary team works with employers and job seekers to understand their needs.</p>

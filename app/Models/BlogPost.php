@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 #[Fillable([
     'title',
     'slug',
+    'seo_title',
+    'meta_description',
+    'primary_keyword',
+    'target_audience',
+    'search_intent',
+    'image_alt',
     'category',
     'excerpt',
     'content',

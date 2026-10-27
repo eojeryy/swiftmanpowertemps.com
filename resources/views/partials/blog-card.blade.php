@@ -5,7 +5,7 @@
 @endphp
 <article class="insight-card blog-article-card">
     <a href="{{ route('blog.details.show', $article) }}" class="blog-card-link">
-        <img src="{{ asset($article->image_path ?: 'assets/images/news/news-1.jpg') }}" alt="" loading="lazy" width="400" height="240">
+        <img src="{{ asset($article->image_path ?: 'assets/images/news/news-1.jpg') }}" alt="{{ $article->image_path ? ($article->image_alt ?: '') : '' }}" loading="lazy" width="400" height="240">
         <div>
             <span class="eyebrow">{{ $article->category ?: 'Hiring & career insights' }}</span>
             <h3>{{ $article->title }}</h3>

@@ -25,8 +25,8 @@
         $canonical = route('job.details.show', $job);
         $socialImage = asset($job->image_path ?: 'assets/images/banner/banner-7.jpg');
     } elseif (isset($post)) {
-        $seoTitle = $post->title.' | Swift Manpower';
-        $seoDescription = \Illuminate\Support\Str::limit(\App\Support\RichText::plainText($post->excerpt ?: $post->content), 160);
+        $seoTitle = $post->seo_title ?: $post->title.' | Swift Manpower';
+        $seoDescription = $post->meta_description ?: \Illuminate\Support\Str::limit(\App\Support\RichText::plainText($post->excerpt ?: $post->content), 160);
         $canonical = route('blog.details.show', $post);
         $socialImage = asset($post->image_path ?: 'assets/images/banner/banner-7.jpg');
     }
@@ -97,6 +97,15 @@
                 ['@type' => 'ListItem', 'position' => 3, 'name' => $post->title, 'item' => $canonical],
             ],
         ];
+        if ($post->primary_keyword) {
+            $articleSchema['keywords'] = $post->primary_keyword;
+        }
+        if ($post->target_audience) {
+            $articleSchema['audience'] = ['@type' => 'Audience', 'audienceType' => $post->target_audience];
+        }
+        if ($post->category) {
+            $articleSchema['articleSection'] = $post->category;
+        }
     @endphp
     <meta property="article:published_time" content="{{ $articleSchema['datePublished'] }}">
     <meta property="article:modified_time" content="{{ $articleSchema['dateModified'] }}">
